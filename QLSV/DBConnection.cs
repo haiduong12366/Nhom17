@@ -11,7 +11,7 @@ namespace QLSV
 {
     internal class DBConnection
     {
-        public SqlConnection conn = new SqlConnection(Properties.Settings.Default.cnnStr);
+        public SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True");
         public void ThucThi(string sqlStr)
         {
             try
