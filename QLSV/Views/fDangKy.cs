@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace QLSV
 {
-    public partial class DangKySinhVien : Form
+    public partial class fDangKy : Form
     {
-        public DangKySinhVien()
+        public fDangKy()
         {
             InitializeComponent();
             Load();
