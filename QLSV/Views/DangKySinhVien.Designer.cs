@@ -51,12 +51,12 @@ namespace QLSV
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDangKy
@@ -102,7 +102,7 @@ namespace QLSV
             // cbGioiTinh
             // 
             this.cbGioiTinh.FormattingEnabled = true;
-            this.cbGioiTinh.Location = new System.Drawing.Point(160, 167);
+            this.cbGioiTinh.Location = new System.Drawing.Point(151, 167);
             this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(2);
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(182, 21);
@@ -110,7 +110,7 @@ namespace QLSV
             // 
             // dtpkNgaySinh
             // 
-            this.dtpkNgaySinh.Location = new System.Drawing.Point(160, 125);
+            this.dtpkNgaySinh.Location = new System.Drawing.Point(151, 125);
             this.dtpkNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.dtpkNgaySinh.Name = "dtpkNgaySinh";
             this.dtpkNgaySinh.Size = new System.Drawing.Size(182, 20);
@@ -118,7 +118,7 @@ namespace QLSV
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(160, 213);
+            this.txtDiaChi.Location = new System.Drawing.Point(151, 213);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(182, 20);
@@ -143,7 +143,7 @@ namespace QLSV
             // 
             // txtHoTen
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(160, 81);
+            this.txtHoTen.Location = new System.Drawing.Point(151, 81);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(182, 20);
@@ -152,7 +152,7 @@ namespace QLSV
             // txtMaSv
             // 
             this.txtMaSv.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtMaSv.Location = new System.Drawing.Point(160, 37);
+            this.txtMaSv.Location = new System.Drawing.Point(151, 37);
             this.txtMaSv.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaSv.Name = "txtMaSv";
             this.txtMaSv.Size = new System.Drawing.Size(182, 20);
@@ -160,7 +160,7 @@ namespace QLSV
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(52, 37);
+            this.label1.Location = new System.Drawing.Point(43, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 20);
             this.label1.TabIndex = 28;
@@ -168,7 +168,7 @@ namespace QLSV
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(52, 84);
+            this.label2.Location = new System.Drawing.Point(43, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 29;
@@ -184,7 +184,7 @@ namespace QLSV
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(52, 170);
+            this.label4.Location = new System.Drawing.Point(43, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 20);
             this.label4.TabIndex = 31;
@@ -192,7 +192,7 @@ namespace QLSV
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(52, 131);
+            this.label5.Location = new System.Drawing.Point(43, 131);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 20);
             this.label5.TabIndex = 32;
@@ -200,7 +200,7 @@ namespace QLSV
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(52, 216);
+            this.label6.Location = new System.Drawing.Point(43, 216);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 20);
             this.label6.TabIndex = 33;
@@ -247,28 +247,6 @@ namespace QLSV
             this.panel1.Size = new System.Drawing.Size(776, 426);
             this.panel1.TabIndex = 39;
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Yellow;
-            this.textBox1.Location = new System.Drawing.Point(2, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(772, 61);
-            this.textBox1.TabIndex = 39;
-            this.textBox1.Text = "Đăng Ký Ở Ký Túc Xá Khu B";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(6, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(770, 66);
-            this.panel2.TabIndex = 40;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -298,6 +276,28 @@ namespace QLSV
             this.panel3.Size = new System.Drawing.Size(765, 351);
             this.panel3.TabIndex = 41;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Location = new System.Drawing.Point(6, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(770, 66);
+            this.panel2.TabIndex = 40;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Yellow;
+            this.textBox1.Location = new System.Drawing.Point(2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(772, 61);
+            this.textBox1.TabIndex = 39;
+            this.textBox1.Text = "Đăng Ký Ở Ký Túc Xá Khu B";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // DangKySinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,10 +307,10 @@ namespace QLSV
             this.Name = "DangKySinhVien";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
