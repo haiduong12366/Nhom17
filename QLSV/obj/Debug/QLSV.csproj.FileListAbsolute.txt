@@ -7,4 +7,14 @@ D:\dh\nam3\hk1\he_quan_tri_csdl\primary\Nhom17\QLSV\obj\Debug\QLSV.csproj.Genera
 D:\dh\nam3\hk1\he_quan_tri_csdl\primary\Nhom17\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
 D:\dh\nam3\hk1\he_quan_tri_csdl\primary\Nhom17\QLSV\obj\Debug\QLSV.exe
 D:\dh\nam3\hk1\he_quan_tri_csdl\primary\Nhom17\QLSV\obj\Debug\QLSV.pdb
-D:\dh\nam3\hk1\he_quan_tri_csdl\primary\Nhom17\QLSV\obj\Debug\QLSV.DangKySinhVien.resources
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\bin\Debug\QLSV.exe.config
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\bin\Debug\QLSV.exe
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\bin\Debug\QLSV.pdb
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.csproj.AssemblyReference.cache
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.csproj.SuggestedBindingRedirects.cache
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.Properties.Resources.resources
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.Views.fQuanLy.resources
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.csproj.GenerateResource.cache
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.exe
+D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.pdb
