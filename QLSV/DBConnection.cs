@@ -20,7 +20,7 @@ namespace QLSV
 
        
 
-        private string connectionSTR = "Data Source=DESKTOP-FK8O065;Initial Catalog=QuanLyQuanCaffe;User ID=sa;PassWord=haiduong";
+        private string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
 
 
 
