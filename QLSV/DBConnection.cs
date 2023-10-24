@@ -11,6 +11,7 @@ namespace QLSV
 {
     internal class DBConnection
     {
+        //SInguyen
         public SqlConnection conn = new SqlConnection(Properties.Settings.Default.cnnStr);
         public void ThucThi(string sqlStr)
         {
