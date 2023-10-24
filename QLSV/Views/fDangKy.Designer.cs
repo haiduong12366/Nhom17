@@ -1,7 +1,7 @@
 ﻿
 namespace QLSV
 {
-    partial class DangKySinhVien
+    partial class fDangKy
     {
         /// <summary>
         /// Required designer variable.
