@@ -1,7 +1,7 @@
 ﻿
 namespace QLSV
 {
-    partial class Form1
+    partial class DangKySinhVien
     {
         /// <summary>
         /// Required designer variable.
