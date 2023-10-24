@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLSV.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QLSV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DangKySinhVien());
+            Application.Run(new fQuanLy());
         }
     }
 }
