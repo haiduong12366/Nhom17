@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLSV.Views
-{
+{//hello world
     public partial class fXemPhong : Form
     {
         public fXemPhong()
