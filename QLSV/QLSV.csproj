@@ -46,9 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\PhongDAO.cs" />
     <Compile Include="DAO\SinhVienDAO.cs" />
+    <Compile Include="DAO\ToaDAO.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="DTO\Phong.cs" />
     <Compile Include="DTO\SinhVien.cs" />
+    <Compile Include="DTO\Toa.cs" />
     <Compile Include="Views\DangKySinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
