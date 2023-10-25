@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,19 @@ namespace QLSV
         string matoa;
 
         public SinhVien() { }
+        public SinhVien(DataRow row)
+        {
+            this.Mssv = row["MaSV"].ToString();
+            this.Ten = row["HoTen"].ToString();
+            this.ngaySinh =(DateTime)row["NgaySinh"];
+            this.Gioitinh = row["GioiTinh"].ToString();
+            this.Cccd = row["CCCD"].ToString();
+            this.Diachi = row["DiaChi"].ToString();
+            this.Sdt = row["SDT"].ToString();
+            this.Maphong = row["MaPhong"].ToString();
+            this.Matoa = row["MaToa"].ToString();
+        }
+
 
         public SinhVien(string mssv, string ten, DateTime ngaySinh, string gioitinh, string cccd, string diachi, string sdt, string maphong, string matoa)
         {

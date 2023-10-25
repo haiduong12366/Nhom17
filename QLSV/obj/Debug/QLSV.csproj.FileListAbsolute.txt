@@ -18,3 +18,7 @@ D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.csproj.GenerateResource.cache
 D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
 D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.exe
 D:\hoc\QTCSDL\demo\Nhom17\QLSV\obj\Debug\QLSV.pdb
+D:\dh\nam3\hk1\he_quan_tri_csdl\Primary\Nhom17\QLSV\obj\Debug\QLSV.fDangKy.resources
+D:\dh\nam3\hk1\he_quan_tri_csdl\Primary\Nhom17\QLSV\obj\Debug\QLSV.Views.fQuanLy.resources
+D:\dh\nam3\hk1\he_quan_tri_csdl\Primary\Nhom17\QLSV\obj\Debug\QLSV.Views.fXemPhong.resources
+D:\dh\nam3\hk1\he_quan_tri_csdl\Primary\Nhom17\QLSV\obj\Debug\QLSV.Views.fDoiMatKhau.resources
