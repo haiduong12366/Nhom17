@@ -35,5 +35,21 @@ namespace QLSV.DAO
 
             return list;
         }
+
+        public List<Phong> layPhong()
+        {
+            List<Phong> list = new List<Phong>();
+            string query = "select * from phong ";
+
+            DataTable data = DBConnection.Instance.ExecuteQuery(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                Phong phong = new Phong(row);
+                list.Add(phong);
+            }
+
+            return list;
+        }
     }
 }

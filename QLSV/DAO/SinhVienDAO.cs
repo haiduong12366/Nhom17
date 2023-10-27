@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLSV.DTO;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,15 +11,23 @@ namespace QLSV.DAO
 {
     internal class SinhVienDAO
     {
+        private static SinhVienDAO instance;
+        public static SinhVienDAO Instance
+        {
+            get { if (instance == null) instance = new SinhVienDAO(); return SinhVienDAO.instance; }
+            private set => SinhVienDAO.instance = value;
+        }
+
+
         DBConnection dbConnec = new DBConnection();
         public DataTable DanhSach()
         {
-            return dbConnec.FormLoad("SELECT *FROM SinhVien");
+            return dbConnec.FormLoad("SELECT * FROM SinhVien");
         }
 
         public DataTable Loc(string col, string value)
         {
-            string lenh = string.Format("SELECT *FROM SinhVien WHERE {0} = '{1}'", col, value);
+            string lenh = string.Format("SELECT * FROM SinhVien WHERE {0} = N'{1}'", col, value);
             return dbConnec.FormLoad(lenh);
         }
         public void Them(SinhVien ns)
@@ -40,6 +50,21 @@ namespace QLSV.DAO
             dbConnec.ThucThi(sqlStr);
 
         }
-       
+
+        public SinhVien Loc(string masv)
+        {
+            
+            string sql = string.Format("SELECT * FROM SinhVien WHERE masv = N'{0}'", masv);
+            DataTable data = DBConnection.Instance.ExecuteQuery(sql);  
+            SinhVien sv = new SinhVien(data.Rows[0]);
+            return sv;
+        }
+        public int Sua(string ten,string ngaysinh,string gioitinh,string cccd,string diachi, string sdt,string mssv)
+        {
+            string sqlStr = string.Format("UPDATE SinhVien SET HoTen = N'{0}',NgaySinh = '{1}',GioiTinh = N'{2}', CCCD = '{3}', DiaChi = N'{4}', SDT = '{5}' WHERE MaSV = '{6}';", ten, ngaysinh, gioitinh, cccd, diachi, sdt, mssv);
+            int count = DBConnection.Instance.ExecuteNonQuery(sqlStr);
+            return count;
+        }
+
     }
 }
