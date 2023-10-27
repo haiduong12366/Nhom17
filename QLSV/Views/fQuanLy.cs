@@ -67,5 +67,21 @@ namespace QLSV.Views
             txtMaPhong.Text = r.Cells[7].Value.ToString();
             txtMaToa.Text = r.Cells[8].Value.ToString();
         }
+
+        private void cboLoaiTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(txtTimKiem.Text == "")
+            {
+                dgvSinhVien.DataSource = svDao.DanhSach();
+                return;
+            }
+            string timkiem = "";
+            if (cboLoaiTimKiem.Text == "Tên") timkiem = "HoTen";
+            if (cboLoaiTimKiem.Text == "Mã SV") timkiem = "MaSV";
+            if (cboLoaiTimKiem.Text == "Phòng") timkiem = "MaPhong";
+            if (cboLoaiTimKiem.Text == "Tòa") timkiem = "MaToa";
+
+            dgvSinhVien.DataSource = svDao.Loc(timkiem, txtTimKiem.Text);
+        }
     }
 }

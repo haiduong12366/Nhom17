@@ -48,13 +48,17 @@
   <ItemGroup>
     <Compile Include="DAO\PhongDAO.cs" />
     <Compile Include="DAO\SinhVienDAO.cs" />
+
+
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="DAO\TienDienDAO.cs" />
     <Compile Include="DAO\TienNuocDAO.cs" />
+
     <Compile Include="DAO\ToaDAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DTO\Phong.cs" />
     <Compile Include="DTO\SinhVien.cs" />
+
     <Compile Include="DTO\TaiKhoan.cs" />
     <Compile Include="DTO\TienDien.cs" />
     <Compile Include="DTO\TienNuoc.cs" />
@@ -62,6 +66,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\fDangKy.cs">
+
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\fDangKy.Designer.cs">
