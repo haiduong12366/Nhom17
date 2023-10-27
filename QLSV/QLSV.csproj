@@ -48,11 +48,16 @@
   <ItemGroup>
     <Compile Include="DAO\PhongDAO.cs" />
     <Compile Include="DAO\SinhVienDAO.cs" />
+    <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DAO\TienDienDAO.cs" />
+    <Compile Include="DAO\TienNuocDAO.cs" />
     <Compile Include="DAO\ToaDAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DTO\Phong.cs" />
     <Compile Include="DTO\SinhVien.cs" />
+    <Compile Include="DTO\TaiKhoan.cs" />
     <Compile Include="DTO\TienDien.cs" />
+    <Compile Include="DTO\TienNuoc.cs" />
     <Compile Include="DTO\Toa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +66,12 @@
     </Compile>
     <Compile Include="Views\fDangKy.Designer.cs">
       <DependentUpon>fDangKy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\fDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\fDoiMatKhau.Designer.cs">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\fQuanLy.cs">
       <SubType>Form</SubType>
@@ -86,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="Views\fDangKy.resx">
       <DependentUpon>fDangKy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\fDoiMatKhau.resx">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
