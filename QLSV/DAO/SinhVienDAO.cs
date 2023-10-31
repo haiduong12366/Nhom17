@@ -30,6 +30,21 @@ namespace QLSV.DAO
             string lenh = string.Format("SELECT * FROM SinhVien WHERE {0} = N'{1}'", col, value);
             return dbConnec.FormLoad(lenh);
         }
+        public List<SinhVien> Search(string TK, string value)
+        {
+            List<SinhVien> list = new List<SinhVien>();
+
+            string query = "select * from SinhVien where "+ TK +" like N'%" + value + "%'";
+
+            DataTable data =DBConnection.Instance.ExecuteQuery(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                SinhVien sv = new SinhVien(row);
+                list.Add(sv);
+            }
+            return list;
+        }
         public void Them(SinhVien ns)
         {
             string sqlStr = string.Format("INSERT INTO SinhVien(MaSV, HoTen, NgaySinh,GioiTinh, CCCD,DiaChi, SDT, MaPhong, MaToa) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", ns.Mssv,ns.Ten,ns.ngaySinh,ns.Gioitinh,ns.Cccd,ns.Diachi,ns.Sdt,ns.Maphong,ns.Matoa);

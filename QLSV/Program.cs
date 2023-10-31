@@ -17,7 +17,7 @@ namespace QLSV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fXemPhong());
+            Application.Run(new fQuanLy());
         }
     }
 }
