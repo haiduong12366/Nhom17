@@ -81,7 +81,7 @@ namespace QLSV.Views
             if (cboLoaiTimKiem.Text == "Phòng") timkiem = "MaPhong";
             if (cboLoaiTimKiem.Text == "Tòa") timkiem = "MaToa";
 
-            dgvSinhVien.DataSource = svDao.Loc(timkiem, txtTimKiem.Text);
+            dgvSinhVien.DataSource = svDao.Search(timkiem, txtTimKiem.Text);
         }
     }
 }
