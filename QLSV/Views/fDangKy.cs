@@ -1,6 +1,8 @@
 ﻿using QLSV.DAO;
 using QLSV.DTO;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace QLSV
@@ -17,6 +19,7 @@ namespace QLSV
             LoadDTPK();
             LoadMaToa();
             LoadGioiTinh();
+            LoadSoKy();
         }
 
         void LoadDTPK()
@@ -27,14 +30,20 @@ namespace QLSV
         {
             cbGioiTinh.Items.Add("Nam");
             cbGioiTinh.Items.Add("Nữ");
+            cbGioiTinh.SelectedIndex = 0;
         }
         void LoadMaToa()
         {
             cbMaToa.DataSource = ToaDAO.Instance.layMaToa();
             cbMaToa.DisplayMember = "TenToa";
+
+        }
+
+        void LoadSoKy()
+        {
             for (int i = 1; i < 5; i++)
                 cbSoKy.Items.Add(i);
-
+            cbSoKy.SelectedIndex = 0;
         }
         void LoadMaPhong()
         {
@@ -56,22 +65,50 @@ namespace QLSV
         {
             string masv = txtMaSv.Text;
             string hoten = txtHoTen.Text;
+            DateTime ngaysinh = dtpkNgaySinh.Value;
             string gioitinh = cbGioiTinh.SelectedItem.ToString();
             string cccd = txtCCCD.Text;
             string diachi = txtDiaChi.Text;
             string sdt = txtSDT.Text;
             string matoa = (cbMaToa.SelectedItem as Toa).MaToa;
             string maphong = (cbMaPhong.SelectedItem as Phong).MaPhong;
+            byte[] anh = ImageToByteArray(txtAnh.Text);
             int soky = Convert.ToInt32(cbSoKy.SelectedItem.ToString());
-            string sql = string.Format("UTP_InsertStudent @masv , @hoten , '{0}-{1}-{2}' , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky ", dtpkNgaySinh.Value.Year, dtpkNgaySinh.Value.Day, dtpkNgaySinh.Value.Month);
-            int count = DBConnection.Instance.ExecuteNonQuery(sql, new object[] { masv, hoten, gioitinh, cccd, diachi, sdt, matoa, maphong, soky });
-            if (count > 0)
-                MessageBox.Show(string.Format("Thêm thành công {0}", count));
-            else
-                MessageBox.Show("Thêm thất bại ");
 
+            
+                string sql = string.Format("UTP_InsertStudent @masv , @hoten , @ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky , @anh ");
+                int count = DBConnection.Instance.ExecuteNonQuery(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
+                if (count > 0)
+                {
+                    MessageBox.Show(string.Format("Đăng ký thành công "));
+                    this.Close();
+                }
+
+                else
+                    MessageBox.Show("Đăng ký thất bại ");
+            
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ODL.Title = "Image";
+            ODL.Filter = "Image|*.png;*.jpg;*.gif";
+            if (ODL.ShowDialog() == DialogResult.OK)
+            {
+                txtAnh.Text = ODL.FileName;
+                ODL.Dispose();//thu hồi bộ nhớ
+            }
+        }
+        byte[] ImageToByteArray(string path)
+        {
+            byte[] a = null;
+            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                a = new byte[fs.Length];
+                fs.Read(a, 0, (int)fs.Length);
+            }
+            return a;
+        }
 
     }
 }

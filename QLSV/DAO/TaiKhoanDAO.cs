@@ -32,10 +32,15 @@ namespace QLSV.DAO
         {
             string sqlStr = string.Format("select * from taikhoan where TaiKhoan = N'{0}'", taikhoan);
             DataTable dt = DBConnection.Instance.ExecuteQuery(sqlStr);
-            TaiKhoan tk = new TaiKhoan(dt.Rows[0]);
-
-            return tk;
+            try
+            {
+                TaiKhoan tk = new TaiKhoan(dt.Rows[0]);
+                return tk;
+            }
+            catch (Exception ex) { 
+                return null;
+            }
+            
         } 
-
     }
 }

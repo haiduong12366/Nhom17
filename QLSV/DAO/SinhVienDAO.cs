@@ -74,10 +74,10 @@ namespace QLSV.DAO
             SinhVien sv = new SinhVien(data.Rows[0]);
             return sv;
         }
-        public int Sua(string ten,string ngaysinh,string gioitinh,string cccd,string diachi, string sdt,string mssv)
+        public int Sua(string ten,DateTime ngaysinh,string gioitinh,string cccd,string diachi, string sdt,byte[] anh ,string mssv)
         {
-            string sqlStr = string.Format("UPDATE SinhVien SET HoTen = N'{0}',NgaySinh = '{1}',GioiTinh = N'{2}', CCCD = '{3}', DiaChi = N'{4}', SDT = '{5}' WHERE MaSV = '{6}';", ten, ngaysinh, gioitinh, cccd, diachi, sdt, mssv);
-            int count = DBConnection.Instance.ExecuteNonQuery(sqlStr);
+            string sqlStr = string.Format("UTP_SuaSV @Hoten , @Ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @anh , @MaSV");
+            int count = DBConnection.Instance.ExecuteNonQuery(sqlStr, new object[] { ten,ngaysinh,gioitinh,cccd,diachi,sdt,anh,mssv });
             return count;
         }
 
