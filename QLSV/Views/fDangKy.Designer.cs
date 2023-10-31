@@ -52,8 +52,12 @@ namespace QLSV
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnAnh = new System.Windows.Forms.Button();
+            this.txtAnh = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.ODL = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -63,7 +67,7 @@ namespace QLSV
             // 
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKy.Location = new System.Drawing.Point(539, 256);
-            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(182, 46);
             this.btnDangKy.TabIndex = 27;
@@ -75,7 +79,7 @@ namespace QLSV
             // 
             this.cbSoKy.FormattingEnabled = true;
             this.cbSoKy.Location = new System.Drawing.Point(539, 210);
-            this.cbSoKy.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSoKy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbSoKy.Name = "cbSoKy";
             this.cbSoKy.Size = new System.Drawing.Size(182, 21);
             this.cbSoKy.TabIndex = 26;
@@ -84,7 +88,7 @@ namespace QLSV
             // 
             this.cbMaPhong.FormattingEnabled = true;
             this.cbMaPhong.Location = new System.Drawing.Point(539, 168);
-            this.cbMaPhong.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMaPhong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbMaPhong.Name = "cbMaPhong";
             this.cbMaPhong.Size = new System.Drawing.Size(182, 21);
             this.cbMaPhong.TabIndex = 25;
@@ -93,7 +97,7 @@ namespace QLSV
             // 
             this.cbMaToa.FormattingEnabled = true;
             this.cbMaToa.Location = new System.Drawing.Point(539, 124);
-            this.cbMaToa.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMaToa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbMaToa.Name = "cbMaToa";
             this.cbMaToa.Size = new System.Drawing.Size(182, 21);
             this.cbMaToa.TabIndex = 24;
@@ -103,7 +107,7 @@ namespace QLSV
             // 
             this.cbGioiTinh.FormattingEnabled = true;
             this.cbGioiTinh.Location = new System.Drawing.Point(151, 167);
-            this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(2);
+            this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(182, 21);
             this.cbGioiTinh.TabIndex = 23;
@@ -111,7 +115,7 @@ namespace QLSV
             // dtpkNgaySinh
             // 
             this.dtpkNgaySinh.Location = new System.Drawing.Point(151, 125);
-            this.dtpkNgaySinh.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpkNgaySinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpkNgaySinh.Name = "dtpkNgaySinh";
             this.dtpkNgaySinh.Size = new System.Drawing.Size(182, 20);
             this.dtpkNgaySinh.TabIndex = 22;
@@ -119,44 +123,49 @@ namespace QLSV
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(151, 213);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(182, 20);
             this.txtDiaChi.TabIndex = 21;
+            this.txtDiaChi.Text = "Hòn Đất";
             // 
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(539, 37);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(182, 20);
             this.txtSDT.TabIndex = 20;
+            this.txtSDT.Text = "0336757217";
             this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // txtCCCD
             // 
             this.txtCCCD.Location = new System.Drawing.Point(539, 84);
-            this.txtCCCD.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCCCD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCCCD.Name = "txtCCCD";
             this.txtCCCD.Size = new System.Drawing.Size(182, 20);
             this.txtCCCD.TabIndex = 19;
+            this.txtCCCD.Text = "091202012357";
             // 
             // txtHoTen
             // 
             this.txtHoTen.Location = new System.Drawing.Point(151, 81);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(182, 20);
             this.txtHoTen.TabIndex = 18;
+            this.txtHoTen.Text = "Hải Dương";
             // 
             // txtMaSv
             // 
             this.txtMaSv.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtMaSv.Location = new System.Drawing.Point(151, 37);
-            this.txtMaSv.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMaSv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMaSv.Name = "txtMaSv";
             this.txtMaSv.Size = new System.Drawing.Size(182, 20);
             this.txtMaSv.TabIndex = 17;
+            this.txtMaSv.Text = "20142482";
             // 
             // label1
             // 
@@ -250,6 +259,9 @@ namespace QLSV
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.btnAnh);
+            this.panel3.Controls.Add(this.txtAnh);
             this.panel3.Controls.Add(this.txtMaSv);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.btnDangKy);
@@ -276,6 +288,33 @@ namespace QLSV
             this.panel3.Size = new System.Drawing.Size(765, 351);
             this.panel3.TabIndex = 41;
             // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(43, 258);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(103, 20);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Ảnh: ";
+            // 
+            // btnAnh
+            // 
+            this.btnAnh.Location = new System.Drawing.Point(275, 256);
+            this.btnAnh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnh.Name = "btnAnh";
+            this.btnAnh.Size = new System.Drawing.Size(56, 19);
+            this.btnAnh.TabIndex = 40;
+            this.btnAnh.Text = "Chọn ảnh";
+            this.btnAnh.UseVisualStyleBackColor = true;
+            this.btnAnh.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtAnh
+            // 
+            this.txtAnh.Location = new System.Drawing.Point(151, 256);
+            this.txtAnh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAnh.Name = "txtAnh";
+            this.txtAnh.Size = new System.Drawing.Size(121, 20);
+            this.txtAnh.TabIndex = 39;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label7);
@@ -295,6 +334,10 @@ namespace QLSV
             this.label7.TabIndex = 0;
             this.label7.Text = "Đăng Ký Ở Ký Túc Xá Khu B";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ODL
+            // 
+            this.ODL.FileName = "openFileDialog1";
             // 
             // fDangKy
             // 
@@ -339,6 +382,10 @@ namespace QLSV
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnAnh;
+        private System.Windows.Forms.TextBox txtAnh;
+        private System.Windows.Forms.OpenFileDialog ODL;
     }
 }
 

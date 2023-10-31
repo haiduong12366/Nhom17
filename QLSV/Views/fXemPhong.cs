@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,24 @@ using System.Windows.Forms;
 
 namespace QLSV.Views
 {
-
+    
 
     internal partial class fXemPhong : Form
     {
+        private string mssv;
+
+
         private TaiKhoan tk;
 
         internal TaiKhoan Tk { get => tk; set => tk = value; }
 
-        public fXemPhong()
+        private byte[] anh;
+        public fXemPhong(string mssv)
         {
             InitializeComponent();
+            this.mssv = mssv;
             Load();
+ 
         }
 
         void Load()
@@ -34,7 +41,7 @@ namespace QLSV.Views
                 cbThang.Items.Add(i);
                 cbThang2.Items.Add(i);
             }
-            SinhVien sv = SinhVienDAO.Instance.Loc("20142487");
+            SinhVien sv = SinhVienDAO.Instance.Loc(mssv);
             txtTen.Text = sv.Ten;
             txtMaPhong.Text = sv.Maphong;
             cbThang.Text = today.Month.ToString();
@@ -46,10 +53,10 @@ namespace QLSV.Views
 
 
         }
-
+        
         void LoadSV()
         {
-            SinhVien sv = SinhVienDAO.Instance.Loc("20142487");
+            SinhVien sv = SinhVienDAO.Instance.Loc(mssv);
             txtMaSv.Text = sv.Mssv;
             txtHoTen.Text = sv.Ten;
             dtpkNgaySinh.Value = sv.ngaySinh;
@@ -59,6 +66,8 @@ namespace QLSV.Views
             txtSDT.Text = sv.Sdt;
             txtMaToa.Text = sv.Matoa;
             txtPhong.Text = sv.Maphong;
+            anh = sv.Anh;
+            PB.Image = ByteArrayToImage(sv.Anh);
         }
 
         private void btnXemDien_Click(object sender, EventArgs e)
@@ -75,6 +84,8 @@ namespace QLSV.Views
             dtgvNuoc.DataSource = TienNuocDAO.Instance.timTienNuoc(MaPhong, thang);
         }
 
+
+        
         private void btnSua_Click(object sender, EventArgs e)
         {
             string masv = txtMaSv.Text;
@@ -83,8 +94,9 @@ namespace QLSV.Views
             string cccd = txtCCCD.Text;
             string diachi = txtDiaChi.Text;
             string sdt = txtSDT.Text;
-            string ngaysinh = String.Format("{0}-{1}-{2}", dtpkNgaySinh.Value.Year, dtpkNgaySinh.Value.Day, dtpkNgaySinh.Value.Month);
-            int count = SinhVienDAO.Instance.Sua(hoten, ngaysinh, gioitinh, cccd, diachi, sdt, masv);
+            
+            DateTime ngaysinh = dtpkNgaySinh.Value;
+            int count = SinhVienDAO.Instance.Sua(hoten, ngaysinh, gioitinh, cccd, diachi, sdt,anh, masv);
             if (count > 0)
             {
                 MessageBox.Show("Sửa thành công");
@@ -101,7 +113,7 @@ namespace QLSV.Views
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
-            SinhVien sv = SinhVienDAO.Instance.Loc("20142487");
+            SinhVien sv = SinhVienDAO.Instance.Loc(mssv);
             this.Tk = TaiKhoanDAO.Instance.layTK(sv.Mssv);
             fDoiMatKhau f = new fDoiMatKhau(sv);
             f.UpdateTK += F_UpdateTK;
@@ -117,6 +129,29 @@ namespace QLSV.Views
                 this.Close();
                 btnDangXuat.Click += btnDangXuat_Click;
             }    
+        }
+        byte[] ImageToByteArray(Image img)
+        {
+            MemoryStream m = new MemoryStream();
+            img.Save(m, System.Drawing.Imaging.ImageFormat.Png);
+            return m.ToArray();
+        }
+        Image ByteArrayToImage(byte[] b)
+        {
+            MemoryStream m = new MemoryStream(b);
+            return Image.FromStream(m);
+        }
+
+        private void btnAnh_Click(object sender, EventArgs e)
+        {
+            ODL.Title = "Image";
+            ODL.Filter = "Image|*.png;*.jpg;*.gif";
+            if (ODL.ShowDialog() == DialogResult.OK)
+            {
+                anh = ImageToByteArray(Image.FromFile(ODL.FileName));
+                txtAnh.Text = ODL.FileName;
+                ODL.Dispose();//thu hồi bộ nhớ
+            }
         }
     }
 }
