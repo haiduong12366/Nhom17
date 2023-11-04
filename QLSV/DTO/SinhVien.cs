@@ -18,7 +18,7 @@ namespace QLSV
         string sdt;
         string maphong;
         string matoa;
-        byte[] anh;
+        byte[] anh = null;
         public SinhVien() { }
         public SinhVien(DataRow row)
         {
@@ -31,7 +31,7 @@ namespace QLSV
             this.Sdt = row["SDT"].ToString();
             this.Maphong = row["MaPhong"].ToString();
             this.Matoa = row["MaToa"].ToString();
-            //this.Anh = (byte[])(row["Anh"]);
+            this.Anh = (byte[])(row["Anh"]);
         }
 
 

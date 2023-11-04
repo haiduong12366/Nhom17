@@ -26,6 +26,10 @@ namespace QLSV.Views
         HoaDonDAO hdDAO = new HoaDonDAO();
         HoaDonDN hd = new HoaDonDN();
 
+        HopDongDAO HopDongDAO = new HopDongDAO();
+
+        string currAcc = fDangNhap.currAcc;
+        public static string masv = null ;
         public fQuanLy()
         {
             InitializeComponent();
@@ -43,7 +47,10 @@ namespace QLSV.Views
             dgvTienDien.DataSource = tdDao.DanhSach();
             dgvTienNuoc.DataSource = tnDao.DanhSach();
             dgvHoaDon.DataSource = hdDAO.DanhSach();
+            dgvHopDong.DataSource = HopDongDAO.DanhSach();
+            
             DoiTenDN();
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -284,6 +291,46 @@ namespace QLSV.Views
             else thang = Convert.ToInt32(cboThangHD.Text);
 
             dgvHoaDon.DataSource = hdDAO.TimKiem(ktr,txtMaPhongHD.Text,thang);
+        }
+
+        private void grpHopDong_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimKiemHD_TextChanged(object sender, EventArgs e)
+        {
+            if (cboLoaiTKHD.Text == "") return;
+            if (txtTimKiemHD.Text == "")
+            {
+                dgvHopDong.DataSource = HopDongDAO.DanhSach();
+                return;
+            }
+            string timkiem = "";
+            if (cboLoaiTKHD.Text == "Mã Phòng") timkiem = "MaPhong";
+            if (cboLoaiTKHD.Text == "Mã Sinh Viên") timkiem = "MaSV";
+            if (cboLoaiTKHD.Text == "Ngày Nhận Phòng") timkiem = "NgayNhanPhong";
+
+
+            dgvHopDong.DataSource = HopDongDAO.TimKiem(timkiem, txtTimKiemHD.Text);
+        }
+
+        private void dgvSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnXoaHopDong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTaiKhoan_Click(object sender, EventArgs e)
+        {
+            masv = txtMSV.Text;
+            fTaiKhoan tk = new fTaiKhoan();
+            tk.ShowDialog();
+
         }
     }   
 }

@@ -95,10 +95,18 @@ namespace QLSV
         byte[] ImageToByteArray(string path)
         {
             byte[] a = null;
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            try
             {
-                a = new byte[fs.Length];
-                fs.Read(a, 0, (int)fs.Length);
+                
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    a = new byte[fs.Length];
+                    fs.Read(a, 0, (int)fs.Length);
+                }
+                return a;
+            }
+            catch { 
+            
             }
             return a;
         }
