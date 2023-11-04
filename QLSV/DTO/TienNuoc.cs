@@ -27,7 +27,13 @@ namespace QLSV.DTO
             this.SoNuocCuoiThang = (int)row["SoNuocCuoiThang"];
             this.Tiennuoc = (float)Convert.ToDouble(row["TienNuoc"]);
         }
-
+        public TienNuoc(string mp, int t, int sddt, int sdct)
+        {
+            maPhong = mp;
+            thang = t;
+            soNuocDauThang = sddt;
+            soNuocCuoiThang = sdct;
+        }
         public string MaPhong { get => maPhong; set => maPhong = value; }
         public int Thang { get => thang; set => thang = value; }
         public int SoNuocDauThang { get => soNuocDauThang; set => soNuocDauThang = value; }

@@ -14,6 +14,8 @@ namespace QLSV.Views
 {
     public partial class fDangNhap : Form
     {
+
+        public static string currAcc = null;
         public fDangNhap()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace QLSV.Views
             }
             else
             {
+                currAcc = txtTaiKhoan.ToString();
                 if(tk.CapBac == 0)
                 {
                     string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
@@ -36,7 +39,8 @@ namespace QLSV.Views
                     this.Hide();
                     f.ShowDialog();
                     this.Show();
-                }    
+                }
+
             }
         }
 

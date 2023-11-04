@@ -153,5 +153,10 @@ namespace QLSV.Views
                 ODL.Dispose();//thu hồi bộ nhớ
             }
         }
+
+        private void fXemPhong_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
