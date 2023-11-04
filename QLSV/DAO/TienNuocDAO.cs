@@ -18,13 +18,30 @@ namespace QLSV.DAO
             private set => TienNuocDAO.instance = value;
         }
 
-        private TienNuocDAO() { }
+
 
         public DataTable timTienNuoc(string Maphong, string thang)
         {
             string sql = string.Format("SELECT * FROM tiennuoc WHERE Maphong = N'{0}' and thang = {1}", Maphong, thang);
             DataTable data = DBConnection.Instance.ExecuteQuery(sql);
             return data;
+        }
+        DBConnection dbConnec = new DBConnection();
+        public DataTable DanhSach()
+        {
+            return dbConnec.FormLoad("SELECT * FROM TienNuoc");
+        }
+        public void Them(TienNuoc ns)
+        {
+            string sql = string.Format("USP_ThemHoaDonNuoc @MaPhong , @Thang , @SoNuocDauThang , @SoNuocCuoiThang ");
+            dbConnec.Use_PROC(sql, new object[] { ns.MaPhong, ns.Thang, ns.SoNuocDauThang, ns.SoNuocCuoiThang });
+
+        }
+        public void Xoa(TienNuoc ns)
+        {
+            string sqlStr = string.Format("DELETE FROM TienNuoc WHERE MaPhong = '{0}' and Thang = '{1}';", ns.MaPhong, ns.Thang);
+            dbConnec.ThucThi(sqlStr);
+
         }
     }
 }

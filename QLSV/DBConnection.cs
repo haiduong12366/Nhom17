@@ -89,6 +89,30 @@ namespace QLSV
                 return data;
             }
         }
+        public void Use_PROC(string query, object[] parameter = null)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains("@"))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i++]);
+                        }
+                    }
+                }
+               command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
 
         public object ExecuteScalar(string query, object[] parameter = null)
         {

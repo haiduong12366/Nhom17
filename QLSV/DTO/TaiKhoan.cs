@@ -21,6 +21,7 @@ namespace QLSV.DTO
             this.MatKhau = row["MatKhau"].ToString();
             this.CapBac = (int)row["CapBac"];
         }
+        public TaiKhoan() { }
 
         public string Taikhoan { get => taiKhoan; set => taiKhoan = value; }
         public string MatKhau { get => matKhau; set => matKhau = value; }

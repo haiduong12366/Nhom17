@@ -19,6 +19,13 @@ namespace QLSV.DTO
         {
             
         }
+        public TienDien(string mp,int t, int sddt, int sdct)
+        {
+            maPhong = mp;
+            thang = t;
+            soDienDauThang = sddt;
+            soDienCuoiThang = sdct;
+        }
         public TienDien(DataRow row)
         {
             this.MaPhong = row["MaPhong"].ToString();
@@ -33,5 +40,7 @@ namespace QLSV.DTO
         public int SoDienDauThang { get => soDienDauThang; set => soDienDauThang = value; }
         public int SoDienCuoiThang { get => soDienCuoiThang; set => soDienCuoiThang = value; }
         public float Tiendien { get => tiendien; set => tiendien = value; }
+
+
     }
 }

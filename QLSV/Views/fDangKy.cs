@@ -77,15 +77,8 @@ namespace QLSV
 
             
                 string sql = string.Format("UTP_InsertStudent @masv , @hoten , @ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky , @anh ");
-                int count = DBConnection.Instance.ExecuteNonQuery(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
-                if (count > 0)
-                {
-                    MessageBox.Show(string.Format("Đăng ký thành công "));
-                    this.Close();
-                }
+                DBConnection.Instance.Use_PROC(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
 
-                else
-                    MessageBox.Show("Đăng ký thất bại ");
             
         }
 
@@ -102,10 +95,18 @@ namespace QLSV
         byte[] ImageToByteArray(string path)
         {
             byte[] a = null;
-            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+            try
             {
-                a = new byte[fs.Length];
-                fs.Read(a, 0, (int)fs.Length);
+                
+                using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    a = new byte[fs.Length];
+                    fs.Read(a, 0, (int)fs.Length);
+                }
+                return a;
+            }
+            catch { 
+            
             }
             return a;
         }
