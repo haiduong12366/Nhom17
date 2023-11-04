@@ -37,12 +37,13 @@ namespace QLSV.DAO
             string query = "select * from SinhVien where "+ TK +" like N'%" + value + "%'";
 
             DataTable data =DBConnection.Instance.ExecuteQuery(query);
-
-            foreach (DataRow row in data.Rows)
-            {
-                SinhVien sv = new SinhVien(row);
-                list.Add(sv);
-            }
+            
+                foreach (DataRow row in data.Rows)
+                {
+                    SinhVien sv = new SinhVien(row);
+                    list.Add(sv);
+                }
+           
             return list;
         }
         public void Them(SinhVien ns)
@@ -59,12 +60,7 @@ namespace QLSV.DAO
 
         }
 
-        public void Sua(SinhVien ns)
-        {
-            string sqlStr = string.Format("UPDATE SinhVien SET HoTen = '{0}',NgaySinh = '{1}',GioiTinh = '{2}', CCCD = '{3}', DiaChi = '{4}', SDT = '{5}', MaPhong = '{6}',MaToa = '{7}' WHERE MaSV = '{8}';", ns.Ten, ns.ngaySinh, ns.Gioitinh, ns.Cccd, ns.Diachi, ns.Sdt, ns.Maphong, ns.Matoa, ns.Mssv);
-            dbConnec.ThucThi(sqlStr);
-
-        }
+  
 
         public SinhVien Loc(string masv)
         {
@@ -79,6 +75,13 @@ namespace QLSV.DAO
             string sqlStr = string.Format("UTP_SuaSV @Hoten , @Ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @anh , @MaSV");
             int count = DBConnection.Instance.ExecuteNonQuery(sqlStr, new object[] { ten,ngaysinh,gioitinh,cccd,diachi,sdt,anh,mssv });
             return count;
+        }
+
+        public void CapNhat(SinhVien ns)
+        {
+            string sqlStr = string.Format("UTP_CapNhatSinhVien @MaSV , @HoTen , @NgaySinh , @GioiTinh , @CCCD , @DiaChi , @SDT , @MaPhong , @MaToa");
+            dbConnec.Use_PROC(sqlStr, new object[] { ns.Mssv, ns.Ten, ns.ngaySinh, ns.Gioitinh, ns.Cccd,ns.Diachi, ns.Sdt,ns.Maphong,ns.Matoa });
+        
         }
 
     }

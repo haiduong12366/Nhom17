@@ -31,7 +31,7 @@ namespace QLSV
             this.Sdt = row["SDT"].ToString();
             this.Maphong = row["MaPhong"].ToString();
             this.Matoa = row["MaToa"].ToString();
-            this.Anh = (byte[])(row["Anh"]);
+            //this.Anh = (byte[])(row["Anh"]);
         }
 
 

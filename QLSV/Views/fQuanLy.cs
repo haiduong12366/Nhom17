@@ -16,8 +16,16 @@ namespace QLSV.Views
     {
         SinhVienDAO svDao = new SinhVienDAO();
         SinhVien ns = new SinhVien();
+
         TienDienDAO tdDao = new TienDienDAO();
         TienDien TienDien = new TienDien();
+
+        TienNuocDAO tnDao = new TienNuocDAO();
+        TienNuoc TienNuoc = new TienNuoc();
+
+        HoaDonDAO hdDAO = new HoaDonDAO();
+        HoaDonDN hd = new HoaDonDN();
+
         public fQuanLy()
         {
             InitializeComponent();
@@ -33,7 +41,9 @@ namespace QLSV.Views
             dgvSinhVien.DataSource = svDao.DanhSach();
             DoiTenGV();
             dgvTienDien.DataSource = tdDao.DanhSach();
-            DoiTenTD();
+            dgvTienNuoc.DataSource = tnDao.DanhSach();
+            dgvHoaDon.DataSource = hdDAO.DanhSach();
+            DoiTenDN();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -46,7 +56,9 @@ namespace QLSV.Views
         private void btnSua_Click(object sender, EventArgs e)
         {
             ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
-            svDao.Sua(ns);
+
+            SinhVienDAO.Instance.CapNhat(ns);
+          
             dgvSinhVien.DataSource = svDao.DanhSach();
         }
         private void DoiTenGV()
@@ -56,13 +68,25 @@ namespace QLSV.Views
             {
                 dgvSinhVien.Columns[i].HeaderText = thuoctinh[i];
             }
+
         }
-        private void DoiTenTD()
+        private void DoiTenDN()
         {
             string[] thuoctinh = { "Mã Phòng", "Tháng", "Số Điện đàu tháng", "Số điện cuối tháng", "Tiền Điện" };
             for (int i = 0; i < thuoctinh.Length; i++)
             {
                 dgvTienDien.Columns[i].HeaderText = thuoctinh[i];
+            }
+            string[] thuoctinh1 = { "Mã Phòng", "Tháng", "Số Nước đàu tháng", "Số Nước cuối tháng", "Tiền Nước" };
+            for (int i = 0; i < thuoctinh1.Length; i++)
+            {
+                dgvTienNuoc.Columns[i].HeaderText = thuoctinh1[i];
+            }
+
+            string[] thuoctinh2 = { "Mã Hóa Đơn", "Mã Phòng", "Tháng", "Tổng Tiền", "Trạng Thái" };
+            for (int i = 0; i < thuoctinh2.Length; i++)
+            {
+                dgvHoaDon.Columns[i].HeaderText = thuoctinh2[i];
             }
         }
 
@@ -87,7 +111,7 @@ namespace QLSV.Views
 
         private void cboLoaiTimKiem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(txtTimKiem.Text == "")
+            if (txtTimKiem.Text == "")
             {
                 dgvSinhVien.DataSource = svDao.DanhSach();
                 return;
@@ -120,7 +144,7 @@ namespace QLSV.Views
 
         private void btnThemTD_Click(object sender, EventArgs e)
         {
-            TienDien = new TienDien(txtMaPhongTD.Text,int.Parse(cboThangTD.Text),int.Parse(txtDienDauThang.Text),int.Parse(txtDienCuoiThang.Text));
+            TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
             tdDao.Them(TienDien);
             dgvTienDien.DataSource = tdDao.DanhSach();
         }
@@ -131,5 +155,135 @@ namespace QLSV.Views
             tdDao.Xoa(TienDien);
             dgvTienDien.DataSource = tdDao.DanhSach();
         }
-    }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (cboLoaiTimKiem.Text == "") return;
+            if (txtTimKiem.Text == "")
+            {
+                dgvSinhVien.DataSource = svDao.DanhSach();
+                return;
+            }
+            string timkiem = "";
+            if (cboLoaiTimKiem.Text == "Tên") timkiem = "HoTen";
+            if (cboLoaiTimKiem.Text == "Mã SV") timkiem = "MaSV";
+            if (cboLoaiTimKiem.Text == "Phòng") timkiem = "MaPhong";
+            if (cboLoaiTimKiem.Text == "Tòa") timkiem = "MaToa";
+
+            dgvSinhVien.DataSource = svDao.Search(timkiem, txtTimKiem.Text);
+        }
+
+        private void btnTimKiemTD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvTienDien.DataSource = tdDao.timTienDien(txtMaPhongTD.Text, cboThangTD.Text);
+
+            }
+            catch { }
+        } 
+
+        private void dgvTienNuoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow a = dgvTienNuoc.SelectedRows[0];
+
+                txtMaPhongTN.Text = a.Cells[0].Value.ToString();
+                cboThangTN.Text = a.Cells[1].Value.ToString();
+                txtNuocDauThang.Text = a.Cells[2].Value.ToString();
+                txtNuocCuoiThang.Text = a.Cells[3].Value.ToString();
+                txtTienNuoc.Text = a.Cells[4].Value.ToString();
+            }
+            catch { }
+        }
+
+        private void btnThemTN_Click(object sender, EventArgs e)
+        {
+            TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
+            tnDao.Them(TienNuoc);
+            dgvTienNuoc.DataSource = tnDao.DanhSach();
+        }
+
+        private void btnXoaTN_Click(object sender, EventArgs e)
+        {
+            TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
+            tnDao.Xoa(TienNuoc);
+            dgvTienNuoc.DataSource = tnDao.DanhSach();
+        }
+
+        private void btnTimKiemTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dgvTienNuoc.DataSource = tnDao.timTienNuoc(txtMaPhongTN.Text, cboThangTN.Text);
+            }
+            catch
+            { }
+         }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow a = dgvHoaDon.SelectedRows[0];
+
+                txtMaHD.Text = a.Cells[0].Value.ToString();
+                txtMaPhongHD.Text= a.Cells[1].Value.ToString();
+                cboThangHD.Text = a.Cells[2].Value.ToString();
+                txtTongTien.Text = a.Cells[3].Value.ToString();
+                txtTrangThai.Text = a.Cells[4].Value.ToString();
+            }
+            catch { }
+        }
+
+        private void btnTaoHD_Click(object sender, EventArgs e)
+        {
+            hdDAO.Them(Convert.ToInt32(txtMaHD.Text),txtMaPhongHD.Text,Convert.ToInt32(cboThangHD.Text));
+            dgvHoaDon.DataSource = hdDAO.DanhSach();
+        }
+
+        private void btnXacNhanDT_Click(object sender, EventArgs e)
+        {
+            hdDAO.XacNhan(Convert.ToInt32(txtMaHD.Text), txtMaPhongHD.Text, Convert.ToInt32(cboThangHD.Text));
+            dgvHoaDon.DataSource = hdDAO.DanhSach();
+        }
+
+        private void btnCD_Click(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+
+            int second = currentTime.Second;
+            int minute = currentTime.Minute;
+            int hour = currentTime.Hour;
+            int day = currentTime.Day;
+            int month = currentTime.Month;
+
+            int ramdomNumber = second + minute * 60 + hour * 60 * 60 + day * 24 * 60 * 60 + month * 30 * 24 * 60 * 60;
+            
+            txtMaHD.Text = ramdomNumber.ToString();
+            txtMaPhongHD.Text = txtMaPhongTN.Text;
+            cboThangHD.Text = cboThangTN.Text;
+
+        }
+
+        private void btnXoaHD_Click(object sender, EventArgs e)
+        {
+            hdDAO.Xoa(Convert.ToInt32(txtMaHD.Text));
+            dgvHoaDon.DataSource = hdDAO.DanhSach();
+        }
+
+        private void btnTimKiemHD_Click(object sender, EventArgs e)
+        {
+            int ktr = 0;
+            int thang;
+          
+            if (cboLoai.Text == "Đã Đóng Tiền") ktr = 1;
+            if (cboLoai.Text == "Chưa Đóng Tiền") ktr = 2;
+            if (cboThangHD.Text == "") thang = -1;
+            else thang = Convert.ToInt32(cboThangHD.Text);
+
+            dgvHoaDon.DataSource = hdDAO.TimKiem(ktr,txtMaPhongHD.Text,thang);
+        }
+    }   
 }

@@ -91,9 +91,6 @@ namespace QLSV
         }
         public void Use_PROC(string query, object[] parameter = null)
         {
-
-            int data = 0;
-
             using (SqlConnection connection = new SqlConnection(connectionSTR))
             {
                 connection.Open();
@@ -112,7 +109,7 @@ namespace QLSV
                         }
                     }
                 }
-                data = command.ExecuteNonQuery();
+               command.ExecuteNonQuery();
                 connection.Close();
             }
         }
