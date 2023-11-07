@@ -22,7 +22,7 @@ namespace QLSV.DAO
         public List<Toa> layMaToa()
         {
             List<Toa> list = new List<Toa>();
-            string query = "select * from toa";
+            string query = "select *  from USV_Toa ";
 
             DataTable data = DBConnection.Instance.ExecuteQuery(query);
 

@@ -1,6 +1,7 @@
 ﻿using QLSV.DAO;
 using QLSV.DTO;
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -75,10 +76,13 @@ namespace QLSV
             byte[] anh = ImageToByteArray(txtAnh.Text);
             int soky = Convert.ToInt32(cbSoKy.SelectedItem.ToString());
 
-            
+            try { 
                 string sql = string.Format("UTP_InsertStudent @masv , @hoten , @ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky , @anh ");
                 DBConnection.Instance.Use_PROC(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
-
+            }catch(SqlException ex)
+            {
+                MessageBox.Show("Error:" + ex.Message,"Message");
+            }
             
         }
 

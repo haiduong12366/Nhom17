@@ -20,7 +20,7 @@ namespace QLSV
 
        
 
-        private string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
+        private string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=haiduong";
 
 
 
@@ -28,7 +28,7 @@ namespace QLSV
         {
 
             DataTable data = new DataTable();
-
+            
             using (SqlConnection connection = new SqlConnection(connectionSTR))
             {
                 connection.Open();
@@ -145,15 +145,6 @@ namespace QLSV
         }
 
 
-
-
-
-
-
-
-
-
-
         public SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True");
         public void ThucThi(string sqlStr)
         {
@@ -163,9 +154,9 @@ namespace QLSV
                 SqlCommand cmd = new SqlCommand(sqlStr, conn);
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception exc)
+            catch (SqlException exc)
             {
-                MessageBox.Show("Thuc thi that bai\n" + exc.Message);
+                MessageBox.Show("Thuc thi that bai\n" + exc);
             }
             finally
             {

@@ -3,9 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QLSV.DAO
 {
@@ -22,7 +24,7 @@ namespace QLSV.DAO
         DBConnection dbConnec = new DBConnection();
         public DataTable DanhSach()
         {
-            return dbConnec.FormLoad("SELECT * FROM SinhVien");
+            return dbConnec.FormLoad("select * from XemBangSinhVien()");
         }
 
         public DataTable Loc(string col, string value)
@@ -34,21 +36,21 @@ namespace QLSV.DAO
         {
             List<SinhVien> list = new List<SinhVien>();
 
-            string query = "select * from SinhVien where "+ TK +" like N'%" + value + "%'";
+            string query = "select * from SinhVien where " + TK + " like N'%" + value + "%'";
 
-            DataTable data =DBConnection.Instance.ExecuteQuery(query);
-            
-                foreach (DataRow row in data.Rows)
-                {
-                    SinhVien sv = new SinhVien(row);
-                    list.Add(sv);
-                }
-           
+            DataTable data = DBConnection.Instance.ExecuteQuery(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                SinhVien sv = new SinhVien(row);
+                list.Add(sv);
+            }
+
             return list;
         }
         public void Them(SinhVien ns)
         {
-            string sqlStr = string.Format("INSERT INTO SinhVien(MaSV, HoTen, NgaySinh,GioiTinh, CCCD,DiaChi, SDT, MaPhong, MaToa) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", ns.Mssv,ns.Ten,ns.ngaySinh,ns.Gioitinh,ns.Cccd,ns.Diachi,ns.Sdt,ns.Maphong,ns.Matoa);
+            string sqlStr = string.Format("INSERT INTO SinhVien(MaSV, HoTen, NgaySinh,GioiTinh, CCCD,DiaChi, SDT, MaPhong, MaToa) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", ns.Mssv, ns.Ten, ns.ngaySinh, ns.Gioitinh, ns.Cccd, ns.Diachi, ns.Sdt, ns.Maphong, ns.Matoa);
             dbConnec.ThucThi(sqlStr);
 
         }
@@ -60,28 +62,35 @@ namespace QLSV.DAO
 
         }
 
-  
+
 
         public SinhVien Loc(string masv)
         {
-            
+
             string sql = string.Format("SELECT * FROM SinhVien WHERE masv = N'{0}'", masv);
-            DataTable data = DBConnection.Instance.ExecuteQuery(sql);  
+            DataTable data = DBConnection.Instance.ExecuteQuery(sql);
             SinhVien sv = new SinhVien(data.Rows[0]);
             return sv;
         }
-        public int Sua(string ten,DateTime ngaysinh,string gioitinh,string cccd,string diachi, string sdt,byte[] anh ,string mssv)
+        public int Sua(string ten, DateTime ngaysinh, string gioitinh, string cccd, string diachi, string sdt, byte[] anh, string mssv)
         {
-            string sqlStr = string.Format("UTP_SuaSV @Hoten , @Ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @anh , @MaSV");
-            int count = DBConnection.Instance.ExecuteNonQuery(sqlStr, new object[] { ten,ngaysinh,gioitinh,cccd,diachi,sdt,anh,mssv });
-            return count;
+            try
+            {
+                string sqlStr = string.Format("UTP_SuaSV @Hoten , @Ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @anh , @MaSV");
+                int count = DBConnection.Instance.ExecuteNonQuery(sqlStr, new object[] { ten, ngaysinh, gioitinh, cccd, diachi, sdt, anh, mssv });
+                return count;
+            }
+            catch (SqlException ex){
+                MessageBox.Show("Error" + ex);
+                return 0; 
+            }
         }
 
         public void CapNhat(SinhVien ns)
         {
             string sqlStr = string.Format("UTP_CapNhatSinhVien @MaSV , @HoTen , @NgaySinh , @GioiTinh , @CCCD , @DiaChi , @SDT , @MaPhong , @MaToa");
-            dbConnec.Use_PROC(sqlStr, new object[] { ns.Mssv, ns.Ten, ns.ngaySinh, ns.Gioitinh, ns.Cccd,ns.Diachi, ns.Sdt,ns.Maphong,ns.Matoa });
-        
+            dbConnec.Use_PROC(sqlStr, new object[] { ns.Mssv, ns.Ten, ns.ngaySinh, ns.Gioitinh, ns.Cccd, ns.Diachi, ns.Sdt, ns.Maphong, ns.Matoa });
+
         }
 
     }
