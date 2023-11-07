@@ -40,6 +40,13 @@ namespace QLSV.Views
                     f.ShowDialog();
                     this.Show();
                 }
+                else
+                {
+                    fQuanLy f = new fQuanLy();
+                    this.Hide();
+                    f.ShowDialog();
+                    this.Show();
+                }
 
             }
         }
