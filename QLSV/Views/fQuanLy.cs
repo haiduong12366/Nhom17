@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -55,18 +56,34 @@ namespace QLSV.Views
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
-            svDao.Xoa(ns);
-            dgvSinhVien.DataSource = svDao.DanhSach();
+            try
+            {
+                ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
+                svDao.Xoa(ns);
+                dgvSinhVien.DataSource = svDao.DanhSach();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
+            try
+            {
+                ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
 
-            SinhVienDAO.Instance.CapNhat(ns);
-          
-            dgvSinhVien.DataSource = svDao.DanhSach();
+                SinhVienDAO.Instance.CapNhat(ns);
+
+                dgvSinhVien.DataSource = svDao.DanhSach();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         private void DoiTenGV()
         {
@@ -151,16 +168,27 @@ namespace QLSV.Views
 
         private void btnThemTD_Click(object sender, EventArgs e)
         {
-            TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
-            tdDao.Them(TienDien);
-            dgvTienDien.DataSource = tdDao.DanhSach();
+            try
+            {
+                TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
+                tdDao.Them(TienDien);
+                dgvTienDien.DataSource = tdDao.DanhSach();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnXoaTD_Click(object sender, EventArgs e)
         {
-            TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
-            tdDao.Xoa(TienDien);
-            dgvTienDien.DataSource = tdDao.DanhSach();
+            try
+            {
+                TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
+                tdDao.Xoa(TienDien);
+                dgvTienDien.DataSource = tdDao.DanhSach();
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
@@ -187,7 +215,7 @@ namespace QLSV.Views
                 dgvTienDien.DataSource = tdDao.timTienDien(txtMaPhongTD.Text, cboThangTD.Text);
 
             }
-            catch { }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         } 
 
         private void dgvTienNuoc_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -207,16 +235,29 @@ namespace QLSV.Views
 
         private void btnThemTN_Click(object sender, EventArgs e)
         {
-            TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
-            tnDao.Them(TienNuoc);
-            dgvTienNuoc.DataSource = tnDao.DanhSach();
+            try
+            {
+                TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
+                tnDao.Them(TienNuoc);
+                dgvTienNuoc.DataSource = tnDao.DanhSach();
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
+
         }
 
         private void btnXoaTN_Click(object sender, EventArgs e)
         {
-            TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
-            tnDao.Xoa(TienNuoc);
-            dgvTienNuoc.DataSource = tnDao.DanhSach();
+            try
+            {
+                TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
+                tnDao.Xoa(TienNuoc);
+                dgvTienNuoc.DataSource = tnDao.DanhSach();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message) ;
+            }
+
         }
 
         private void btnTimKiemTN_Click(object sender, EventArgs e)
@@ -246,14 +287,25 @@ namespace QLSV.Views
 
         private void btnTaoHD_Click(object sender, EventArgs e)
         {
-            hdDAO.Them(Convert.ToInt32(txtMaHD.Text),txtMaPhongHD.Text,Convert.ToInt32(cboThangHD.Text));
-            dgvHoaDon.DataSource = hdDAO.DanhSach();
+            try
+            {
+                hdDAO.Them(Convert.ToInt32(txtMaHD.Text), txtMaPhongHD.Text, Convert.ToInt32(cboThangHD.Text));
+                dgvHoaDon.DataSource = hdDAO.DanhSach();
+            }
+            catch(Exception ex) {MessageBox.Show(ex.Message); }
         }
 
         private void btnXacNhanDT_Click(object sender, EventArgs e)
         {
-            hdDAO.XacNhan(Convert.ToInt32(txtMaHD.Text), txtMaPhongHD.Text, Convert.ToInt32(cboThangHD.Text));
-            dgvHoaDon.DataSource = hdDAO.DanhSach();
+            try
+            {
+                hdDAO.XacNhan(Convert.ToInt32(txtMaHD.Text), txtMaPhongHD.Text, Convert.ToInt32(cboThangHD.Text));
+                dgvHoaDon.DataSource = hdDAO.DanhSach();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCD_Click(object sender, EventArgs e)
@@ -276,21 +328,29 @@ namespace QLSV.Views
 
         private void btnXoaHD_Click(object sender, EventArgs e)
         {
-            hdDAO.Xoa(Convert.ToInt32(txtMaHD.Text));
-            dgvHoaDon.DataSource = hdDAO.DanhSach();
+            try
+            {
+                hdDAO.Xoa(Convert.ToInt32(txtMaHD.Text));
+                dgvHoaDon.DataSource = hdDAO.DanhSach();
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void btnTimKiemHD_Click(object sender, EventArgs e)
         {
-            int ktr = 0;
-            int thang;
-          
-            if (cboLoai.Text == "Đã Đóng Tiền") ktr = 1;
-            if (cboLoai.Text == "Chưa Đóng Tiền") ktr = 2;
-            if (cboThangHD.Text == "") thang = -1;
-            else thang = Convert.ToInt32(cboThangHD.Text);
+            try
+            {
+                int ktr = 0;
+                int thang;
 
-            dgvHoaDon.DataSource = hdDAO.TimKiem(ktr,txtMaPhongHD.Text,thang);
+                if (cboLoai.Text == "Đã Đóng Tiền") ktr = 1;
+                if (cboLoai.Text == "Chưa Đóng Tiền") ktr = 2;
+                if (cboThangHD.Text == "") thang = -1;
+                else thang = Convert.ToInt32(cboThangHD.Text);
+
+                dgvHoaDon.DataSource = hdDAO.TimKiem(ktr, txtMaPhongHD.Text, thang);
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void grpHopDong_Enter(object sender, EventArgs e)
@@ -327,9 +387,19 @@ namespace QLSV.Views
 
         private void txtTaiKhoan_Click(object sender, EventArgs e)
         {
-            masv = txtMSV.Text;
-            fTaiKhoan tk = new fTaiKhoan();
-            tk.ShowDialog();
+                if(txtMSV.Text == "")
+            {
+                MessageBox.Show("Nhập mã số sinh viên");
+                return;
+            }            
+                masv = txtMSV.Text;
+                fTaiKhoan tk = new fTaiKhoan();
+                tk.ShowDialog();
+            
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
 
         }
     }   
