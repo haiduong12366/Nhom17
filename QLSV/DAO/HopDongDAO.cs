@@ -13,9 +13,9 @@ namespace QLSV.DAO
 
         DBConnection dbConnec = new DBConnection();
 
-        public DataTable DanhSach()
+        public DataTable DanhSach(string toa)
         {
-            return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong");
+            return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong where MaPhong like N'%" + toa + "%'");
         }
 
         public DataTable TimKiem(string tk, string value)

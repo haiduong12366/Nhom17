@@ -43,6 +43,21 @@ namespace QLSV.DAO
             }
             
         }
+        public QuanLy layTT(string taikhoan)
+        {
+            string sqlStr = string.Format("select * from QuanLy where MaQL = N'{0}'", taikhoan);
+            DataTable dt = DBConnection.Instance.ExecuteQuery(sqlStr);
+            try
+            {
+                QuanLy tk = new QuanLy(dt.Rows[0]);
+                return tk;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
 
     }
 }

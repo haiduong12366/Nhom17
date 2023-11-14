@@ -27,9 +27,11 @@ namespace QLSV.DAO
             return data;
         }
         DBConnection dbConnec = new DBConnection();
-        public DataTable DanhSach()
+        public DataTable DanhSach(string toa)
         {
-            return dbConnec.FormLoad("SELECT * FROM TienNuoc");
+            string sql = string.Format("SELECT * FROM TienNuoc where MaPhong like N'%" + toa + "%'");
+
+            return dbConnec.FormLoad(sql);
         }
         public void Them(TienNuoc ns)
         {

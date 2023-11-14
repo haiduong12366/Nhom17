@@ -25,13 +25,14 @@ namespace QLSV.Views
         {
             string txt = txtTaiKhoan.Text;
             TaiKhoan tk = TaiKhoanDAO.Instance.layTK(txt);
-            if (tk == null)
+            if (tk == null || tk.MatKhau != txtMatKhau.Text)
             {
-                MessageBox.Show("Tài khoản tồn tại", "Thông báo");
+                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
             }
             else
             {
-                currAcc = txtTaiKhoan.ToString();
+                currAcc = tk.Taikhoan.ToString();
+               
                 if(tk.CapBac == 0)
                 {
                     string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
@@ -57,6 +58,11 @@ namespace QLSV.Views
             this.Hide();
             f.ShowDialog();
             this.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

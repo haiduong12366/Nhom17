@@ -88,7 +88,6 @@
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNuoc)).BeginInit();
-            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB)).BeginInit();
@@ -103,7 +102,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(16, 15);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1035, 580);
@@ -113,9 +112,9 @@
             // 
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1027, 551);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tiền Điện";
@@ -132,7 +131,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnXemDien);
             this.panel1.Location = new System.Drawing.Point(8, 7);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 533);
             this.panel1.TabIndex = 8;
@@ -140,7 +139,7 @@
             // txtTen
             // 
             this.txtTen.Location = new System.Drawing.Point(136, 15);
-            this.txtTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTen.Margin = new System.Windows.Forms.Padding(4);
             this.txtTen.Name = "txtTen";
             this.txtTen.ReadOnly = true;
             this.txtTen.Size = new System.Drawing.Size(393, 22);
@@ -151,7 +150,7 @@
             this.dtgvDien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvDien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvDien.Location = new System.Drawing.Point(4, 95);
-            this.dtgvDien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvDien.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvDien.Name = "dtgvDien";
             this.dtgvDien.RowHeadersWidth = 51;
             this.dtgvDien.Size = new System.Drawing.Size(1000, 434);
@@ -171,7 +170,7 @@
             // 
             this.cbThang.FormattingEnabled = true;
             this.cbThang.Location = new System.Drawing.Point(623, 48);
-            this.cbThang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbThang.Margin = new System.Windows.Forms.Padding(4);
             this.cbThang.Name = "cbThang";
             this.cbThang.Size = new System.Drawing.Size(199, 24);
             this.cbThang.TabIndex = 1;
@@ -189,7 +188,7 @@
             // txtMaPhong
             // 
             this.txtMaPhong.Location = new System.Drawing.Point(136, 49);
-            this.txtMaPhong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaPhong.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaPhong.Name = "txtMaPhong";
             this.txtMaPhong.ReadOnly = true;
             this.txtMaPhong.Size = new System.Drawing.Size(393, 22);
@@ -208,7 +207,7 @@
             // btnXemDien
             // 
             this.btnXemDien.Location = new System.Drawing.Point(840, 10);
-            this.btnXemDien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXemDien.Margin = new System.Windows.Forms.Padding(4);
             this.btnXemDien.Name = "btnXemDien";
             this.btnXemDien.Size = new System.Drawing.Size(164, 64);
             this.btnXemDien.TabIndex = 3;
@@ -220,9 +219,9 @@
             // 
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1027, 551);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tiền Nước";
@@ -239,7 +238,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnXem2);
             this.panel2.Location = new System.Drawing.Point(8, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 533);
             this.panel2.TabIndex = 9;
@@ -247,7 +246,7 @@
             // txtTen2
             // 
             this.txtTen2.Location = new System.Drawing.Point(136, 15);
-            this.txtTen2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTen2.Margin = new System.Windows.Forms.Padding(4);
             this.txtTen2.Name = "txtTen2";
             this.txtTen2.ReadOnly = true;
             this.txtTen2.Size = new System.Drawing.Size(393, 22);
@@ -258,7 +257,7 @@
             this.dtgvNuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvNuoc.Location = new System.Drawing.Point(4, 95);
-            this.dtgvNuoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvNuoc.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvNuoc.Name = "dtgvNuoc";
             this.dtgvNuoc.RowHeadersWidth = 51;
             this.dtgvNuoc.Size = new System.Drawing.Size(1000, 434);
@@ -278,7 +277,7 @@
             // 
             this.cbThang2.FormattingEnabled = true;
             this.cbThang2.Location = new System.Drawing.Point(623, 48);
-            this.cbThang2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbThang2.Margin = new System.Windows.Forms.Padding(4);
             this.cbThang2.Name = "cbThang2";
             this.cbThang2.Size = new System.Drawing.Size(199, 24);
             this.cbThang2.TabIndex = 1;
@@ -296,7 +295,7 @@
             // txtMaPhong2
             // 
             this.txtMaPhong2.Location = new System.Drawing.Point(136, 49);
-            this.txtMaPhong2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaPhong2.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaPhong2.Name = "txtMaPhong2";
             this.txtMaPhong2.ReadOnly = true;
             this.txtMaPhong2.Size = new System.Drawing.Size(393, 22);
@@ -315,7 +314,7 @@
             // btnXem2
             // 
             this.btnXem2.Location = new System.Drawing.Point(840, 10);
-            this.btnXem2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXem2.Margin = new System.Windows.Forms.Padding(4);
             this.btnXem2.Name = "btnXem2";
             this.btnXem2.Size = new System.Drawing.Size(164, 64);
             this.btnXem2.TabIndex = 3;
@@ -325,12 +324,10 @@
             // 
             // tabPage3
             // 
-
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(1027, 551);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hóa Đơn Điện Nước";
@@ -340,9 +337,9 @@
             // 
             this.tabPage4.Controls.Add(this.panel3);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(1027, 551);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Sinh Viên";
@@ -377,7 +374,7 @@
             this.panel3.Controls.Add(this.dtpkNgaySinh);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Location = new System.Drawing.Point(3, 7);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1020, 537);
             this.panel3.TabIndex = 42;
@@ -385,7 +382,7 @@
             // btnAnh
             // 
             this.btnAnh.Location = new System.Drawing.Point(868, 256);
-            this.btnAnh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnh.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnh.Name = "btnAnh";
             this.btnAnh.Size = new System.Drawing.Size(100, 28);
             this.btnAnh.TabIndex = 48;
@@ -405,7 +402,7 @@
             // txtAnh
             // 
             this.txtAnh.Location = new System.Drawing.Point(719, 256);
-            this.txtAnh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAnh.Margin = new System.Windows.Forms.Padding(4);
             this.txtAnh.Name = "txtAnh";
             this.txtAnh.Size = new System.Drawing.Size(132, 22);
             this.txtAnh.TabIndex = 46;
@@ -642,6 +639,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 139);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(753, 297);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -653,10 +651,9 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fXemPhong";
-            this.Text = "fXemPhong";
- 
+            this.Text = "Sinh Viên";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -666,7 +663,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNuoc)).EndInit();
-            this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

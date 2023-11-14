@@ -18,11 +18,7 @@ namespace QLSV
             private set => DBConnection.instance = value;
         }
 
-       
-
-        private string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=haiduong";
-
-
+         static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=123456";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
@@ -47,8 +43,6 @@ namespace QLSV
                         }
                     }
                 }
-
-
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -143,6 +137,18 @@ namespace QLSV
                 return data;
             }
         }
+
+
+        public void updatestring(string user,string pass)
+        {
+            connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID="+ user+";Password=" + pass;
+        }
+
+
+
+
+
+
 
 
         public SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True");
