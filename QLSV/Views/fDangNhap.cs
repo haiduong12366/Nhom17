@@ -43,6 +43,7 @@ namespace QLSV.Views
                 }
                 else
                 {
+                    DBConnection.DangNhap(tk.Taikhoan, tk.Taikhoan);
                     fQuanLy f = new fQuanLy();
                     this.Hide();
                     f.ShowDialog();

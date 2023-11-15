@@ -183,6 +183,7 @@
   <ItemGroup>
     <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\HopDongDAO.cs" />
+    <Compile Include="DAO\KyLuatDAO.cs" />
     <Compile Include="DAO\PhongDAO.cs" />
     <Compile Include="DAO\QuanLyDAO.cs" />
     <Compile Include="DAO\SinhVienDAO.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="DTO\HoaDonDN.cs" />
     <Compile Include="DTO\HopDong.cs" />
+    <Compile Include="DTO\KyLuat.cs" />
     <Compile Include="DTO\Phong.cs" />
     <Compile Include="DTO\QuanLy.cs" />
     <Compile Include="DTO\SinhVien.cs" />

@@ -11,6 +11,8 @@ namespace QLSV
 {
     internal class DBConnection
     {
+
+
         private static DBConnection instance;
         public static DBConnection Instance
         {
@@ -18,7 +20,12 @@ namespace QLSV
             private set => DBConnection.instance = value;
         }
 
-         static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=123456";
+        static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=123456";
+
+        public static void DangNhap(string user, string pass)
+        {
+            connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID="+user+";Password=" + pass;
+        }  
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

@@ -32,6 +32,9 @@ namespace QLSV.Views
 
         QuanLyDAO qlDao = new QuanLyDAO();
 
+        KyLuatDAO klDao = new KyLuatDAO();
+        KyLuat kl = new KyLuat();
+
         string currAcc = null;
         QuanLy ql ;
 
@@ -65,7 +68,11 @@ namespace QLSV.Views
                 dgvHoaDon.DataSource = hdDAO.DanhSach(ql.MaToa);
                 dgvHopDong.DataSource = HopDongDAO.DanhSach(ql.MaToa);
 
+                dgvKyLuat.DataSource = klDao.DanhSach(ql.MaToa);
+
                 DoiTenDN();
+
+                txtMaToaKL.Text = ql.MaToa;
             }
             catch(Exception ex)
             {
@@ -138,6 +145,12 @@ namespace QLSV.Views
             for (int i = 0; i < thuoctinh2.Length; i++)
             {
                 dgvHoaDon.Columns[i].HeaderText = thuoctinh2[i];
+            }
+
+            string[] thuoctinh3 = { "Mã Kỷ Luật", "Mã Sinh Viên", "Mã Tòa", "Lỗi Vi Phạm", "Ngày Kỷ Luật" };
+            for (int i = 0; i < thuoctinh3.Length; i++)
+            {
+                dgvKyLuat.Columns[i].HeaderText = thuoctinh3[i];
             }
         }
 
@@ -521,11 +534,53 @@ namespace QLSV.Views
 
         private void btnSuaTTQL_Click(object sender, EventArgs e)
         {
+            try
+            {
+                qlDao.Sua(txtTenQL.Text, txtMaQL.Text);
 
-            qlDao.Sua(txtTenQL.Text,txtMaQL.Text);
+                ql = TaiKhoanDAO.Instance.layTT(currAcc);
+                TaiKhoan();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-            ql = TaiKhoanDAO.Instance.layTT(currAcc);
-            TaiKhoan();
+        private void btnThemKL_Click(object sender, EventArgs e)
+        {
+            kl = new KyLuat(txtMaKyLuat.Text, txtMaSVKL.Text, txtMaToaKL.Text,txtLoiViPham.Text ,dtpNgayViPham.Value.Date);
+            klDao.Them(kl);
+            dgvKyLuat.DataSource = klDao.DanhSach(ql.MaToa);
+
+        }
+
+        private void dgvKyLuat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow r = dgvKyLuat.SelectedRows[0];
+
+                txtMaKyLuat.Text = r.Cells[0].Value.ToString();
+                txtMaSVKL.Text = r.Cells[1].Value.ToString();
+                txtMaToaKL.Text = r.Cells[2].Value.ToString();
+                txtLoiViPham.Text = r.Cells[3].Value.ToString();
+                dtpNgayViPham.Text = r.Cells[4].Value.ToString();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnXoaKL_Click(object sender, EventArgs e)
+        {
+            kl = new KyLuat(txtMaKyLuat.Text, txtMaSVKL.Text, txtMaToaKL.Text, txtLoiViPham.Text, dtpNgayViPham.Value.Date);
+            klDao.Xoa(kl);
+            dgvKyLuat.DataSource = klDao.DanhSach(ql.MaToa);
+        }
+
+        private void txtmaKL_TextChanged(object sender, EventArgs e)
+        {
+            dgvKyLuat.DataSource = klDao.Loc(txtmaKL.Text,txtMaToaKL.Text);
         }
     }   
 }
