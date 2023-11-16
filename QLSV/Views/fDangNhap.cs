@@ -35,7 +35,7 @@ namespace QLSV.Views
                 if(tk.CapBac == 0)
                 {
                     string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
-                    fXemPhong f = new fXemPhong(sv);
+                    fSinhVien f = new fSinhVien(sv);
                     this.Hide();
                     f.ShowDialog();
                     this.Show();

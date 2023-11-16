@@ -15,7 +15,7 @@ namespace QLSV.Views
 {
     
 
-    internal partial class fXemPhong : Form
+    internal partial class fSinhVien : Form
     {
         private string mssv;
 
@@ -25,7 +25,7 @@ namespace QLSV.Views
         internal TaiKhoan Tk { get => tk; set => tk = value; }
 
         private byte[] anh;
-        public fXemPhong(string mssv)
+        public fSinhVien(string mssv)
         {
             InitializeComponent();
             this.mssv = mssv;

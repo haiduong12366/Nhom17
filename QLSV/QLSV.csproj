@@ -230,11 +230,11 @@
     <Compile Include="Views\fTaiKhoan.Designer.cs">
       <DependentUpon>fTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\fXemPhong.cs">
+    <Compile Include="Views\fSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\fXemPhong.Designer.cs">
-      <DependentUpon>fXemPhong.cs</DependentUpon>
+    <Compile Include="Views\fSinhVien.Designer.cs">
+      <DependentUpon>fSinhVien.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -261,8 +261,8 @@
     <EmbeddedResource Include="Views\fTaiKhoan.resx">
       <DependentUpon>fTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\fXemPhong.resx">
-      <DependentUpon>fXemPhong.cs</DependentUpon>
+    <EmbeddedResource Include="Views\fSinhVien.resx">
+      <DependentUpon>fSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
