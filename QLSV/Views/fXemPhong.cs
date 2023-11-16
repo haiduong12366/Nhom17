@@ -158,5 +158,10 @@ namespace QLSV.Views
         {
 
         }
+
+        private void fXemPhong_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

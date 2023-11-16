@@ -18,10 +18,10 @@ namespace QLSV.DAO
             return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong where MaPhong like N'%" + toa + "%'");
         }
 
-        public DataTable TimKiem(string tk, string value)
+        public DataTable TimKiem(string tk, string value,string ql)
         {
 
-            string lenh = string.Format("SELECT * FROM SuKienDatPhong WHERE " +tk + " = '" +value+"'" );
+            string lenh = string.Format("SELECT * FROM SuKienDatPhong WHERE " +tk + " like N'%" + value+ "%' and MaQL = '" +ql +"'");
             return dbConnec.FormLoad(lenh);
         }
 

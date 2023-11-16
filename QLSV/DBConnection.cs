@@ -20,7 +20,7 @@ namespace QLSV
             private set => DBConnection.instance = value;
         }
 
-        static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=123456";
+        static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
 
         public static void DangNhap(string user, string pass)
         {
@@ -155,12 +155,10 @@ namespace QLSV
 
 
 
-
-
-
-        public SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True");
+        public SqlConnection conn = new SqlConnection(connectionSTR);
         public void ThucThi(string sqlStr)
         {
+            SqlConnection conn = new SqlConnection(connectionSTR);
             try
             {
                 conn.Open();
@@ -178,6 +176,7 @@ namespace QLSV
         }
         public DataTable FormLoad(string sqlStr)
         {
+            SqlConnection conn = new SqlConnection(connectionSTR);
             DataTable dataSet = new DataTable();
             try
             {
@@ -198,6 +197,7 @@ namespace QLSV
         }
         public object GetItem(string sqlStr)
         {
+            SqlConnection conn = new SqlConnection(connectionSTR);
             object result = new object();
             try
             {

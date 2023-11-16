@@ -462,25 +462,26 @@ namespace QLSV.Views
         private void txtTimKiemHD_TextChanged(object sender, EventArgs e)
         {
             string content = txtTimKiemHD.Text;
+            if (txtTimKiemHD.Text == "")
+            {
+                dgvHopDong.DataSource = HopDongDAO.DanhSach(ql.MaToa);
+                return;
+            }
+            if (cboLoaiTKHD.Text == "") return;
             if (!content.Contains(ql.MaToa) && cboLoaiTKHD.Text == "Mã Phòng")
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
                 return;
             }
 
-            if (cboLoaiTKHD.Text == "") return;
-            if (txtTimKiemHD.Text == "")
-            {
-                dgvHopDong.DataSource = HopDongDAO.DanhSach(ql.MaToa);
-                return;
-            }
+            
+        
             string timkiem = "";
             if (cboLoaiTKHD.Text == "Mã Phòng") timkiem = "MaPhong";
             if (cboLoaiTKHD.Text == "Mã Sinh Viên") timkiem = "MaSV";
-            if (cboLoaiTKHD.Text == "Ngày Nhận Phòng") timkiem = "NgayNhanPhong";
 
 
-            dgvHopDong.DataSource = HopDongDAO.TimKiem(timkiem, txtTimKiemHD.Text);
+            dgvHopDong.DataSource = HopDongDAO.TimKiem(timkiem, txtTimKiemHD.Text, ql.Maql) ;
         }
 
         private void dgvSinhVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -581,6 +582,11 @@ namespace QLSV.Views
         private void txtmaKL_TextChanged(object sender, EventArgs e)
         {
             dgvKyLuat.DataSource = klDao.Loc(txtmaKL.Text,txtMaToaKL.Text);
+        }
+
+        private void cboLoaiTKHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }   
 }

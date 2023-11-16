@@ -654,6 +654,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fXemPhong";
             this.Text = "Sinh Viên";
+            
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
