@@ -81,7 +81,7 @@ namespace QLSV
                 DBConnection.Instance.Use_PROC(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
             }catch(SqlException ex)
             {
-                MessageBox.Show("Error:" + ex.Message,"Message");
+                MessageBox.Show("Error: " + ex.Message,"Message");
             }
             
         }

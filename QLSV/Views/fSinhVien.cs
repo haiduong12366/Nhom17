@@ -17,7 +17,6 @@ namespace QLSV.Views
 
     internal partial class fSinhVien : Form
     {
-        private string mssv;
         SinhVien sv;
 
         private TaiKhoan tk;
@@ -25,11 +24,10 @@ namespace QLSV.Views
         internal TaiKhoan Tk { get => tk; set => tk = value; }
 
         private byte[] anh;
-        public fSinhVien(string mssv)
+        public fSinhVien()
         {
             InitializeComponent();
-            this.mssv = mssv;
-            sv = SinhVienDAO.Instance.Loc(mssv);
+            sv = UserSession.LoggedInUser;
             Load();
 
         }
@@ -43,7 +41,7 @@ namespace QLSV.Views
                 cbThang2.Items.Add(i);
                 cbThang3.Items.Add(i);
             }
-            sv = SinhVienDAO.Instance.Loc(mssv);
+            sv = SinhVienDAO.Instance.Loc(sv.Mssv);
             txtTen.Text = sv.Ten;
             txtMaPhong.Text = sv.Maphong;
             cbThang.Text = today.Month.ToString();
@@ -55,10 +53,13 @@ namespace QLSV.Views
 
 
         }
-
+        void LoadSVTheoPhong()
+        {
+            dtgvXemThanhVien.DataSource = DBConnection.Instance.ExecuteQuery("UTP_XemThanhVien @maphong",new object[] {sv.Maphong});
+        }
         void LoadSV()
         {
-            sv = SinhVienDAO.Instance.Loc(mssv);
+            sv = SinhVienDAO.Instance.Loc(sv.Mssv);
             txtMaSv.Text = sv.Mssv;
             txtHoTen.Text = sv.Ten;
             dtpkNgaySinh.Value = sv.ngaySinh;
@@ -74,9 +75,11 @@ namespace QLSV.Views
                 PB.Image = ByteArrayToImage(sv.Anh);
             }
             catch (Exception e) { }
+            lbxemthanhvien.Text = lbxemthanhvien.Text + sv.Maphong;
             LoadHopDong();
+            LoadSVTheoPhong();
         }
-
+        
         void LoadHopDong()
         {
             HopDong hopDong = HopDongDAO.Instance.TimKiemHopDongTheoSV(sv.Mssv);
@@ -134,7 +137,7 @@ namespace QLSV.Views
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
-            SinhVien sv = SinhVienDAO.Instance.Loc(mssv);
+            sv = SinhVienDAO.Instance.Loc(sv.Mssv);
             this.Tk = TaiKhoanDAO.Instance.layTK(sv.Mssv);
             fDoiMatKhau f = new fDoiMatKhau(sv);
             f.UpdateTK += F_UpdateTK;
@@ -197,10 +200,17 @@ namespace QLSV.Views
 
         }
 
-
-        private void tabPage5_Click(object sender, EventArgs e)
+        private void btnGiaHan_Click(object sender, EventArgs e)
         {
+            fGiaHan f = new fGiaHan();
+            f.ShowDialog();
+            Load();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fXemKyLuat f = new fXemKyLuat();
+            f.ShowDialog();
         }
     }
 }

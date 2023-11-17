@@ -73,7 +73,7 @@ namespace QLSV.DAO
         {
             try
             {
-                string sqlStr = string.Format("UTP_SuaSV @Hoten , @Ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @anh , @MaSV");
+                string sqlStr = string.Format("UTP_SuaSVDoSvThucHien @Hoten , @Ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @anh , @MaSV");
                 int count = DBConnection.Instance.ExecuteNonQuery(sqlStr, new object[] { ten, ngaysinh, gioitinh, cccd, diachi, sdt, anh, mssv });
                 return count;
             }

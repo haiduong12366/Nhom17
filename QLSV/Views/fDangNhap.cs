@@ -44,7 +44,8 @@ namespace QLSV.Views
                         string acc = "SV" + tk.Taikhoan;
                         DBConnection.DangNhap(acc, tk.Taikhoan);
                         string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
-                        fXemPhong f = new fXemPhong(sv);
+                        UserSession.LoginUser(SinhVienDAO.Instance.Loc(sv));
+                        fSinhVien f = new fSinhVien();
                         this.Hide();
                         f.ShowDialog();
                         this.Show();
@@ -65,7 +66,7 @@ namespace QLSV.Views
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            DBConnection.DangNhap("sa", "123456");
+            DBConnection.DangNhap("sa", "haiduong");
             fDangKy f = new fDangKy();
             this.Hide();
             f.ShowDialog();

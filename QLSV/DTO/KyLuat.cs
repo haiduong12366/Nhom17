@@ -11,7 +11,7 @@ namespace QLSV.DTO
         string maKL;
         string maSV;
         string maToa;
-        string loiViPham;
+        string loaiViPham;
         DateTime ngayViPham;
 
         public KyLuat (string maKL, string maSV, string maToa, string loiViPham, DateTime ngayViPham)
@@ -19,7 +19,7 @@ namespace QLSV.DTO
             this.MaKL = maKL;
             this.MaSV = maSV;
             this.MaToa = maToa;
-            this.LoiViPham = loiViPham;
+            this.LoaiViPham = loiViPham;
             this.NgayViPham = ngayViPham;
         }
 
@@ -29,7 +29,7 @@ namespace QLSV.DTO
         public string MaKL { get => maKL; set => maKL = value; }
         public string MaSV { get => maSV; set => maSV = value; }
         public string MaToa { get => maToa; set => maToa = value; }
-        public string LoiViPham { get => loiViPham; set => loiViPham = value; }
+        public string LoaiViPham { get => loaiViPham; set => loaiViPham = value; }
         public DateTime NgayViPham { get => ngayViPham; set => ngayViPham = value; }
     }
 }
