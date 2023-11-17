@@ -23,40 +23,58 @@ namespace QLSV.Views
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            string txt = txtTaiKhoan.Text;
-            TaiKhoan tk = TaiKhoanDAO.Instance.layTK(txt);
-            if (tk == null)
+            try
             {
-                MessageBox.Show("Tài khoản tồn tại", "Thông báo");
-            }
-            else
-            {
-                currAcc = txtTaiKhoan.ToString();
-                if(tk.CapBac == 0)
+                string txt = txtTaiKhoan.Text;
+                TaiKhoan tk = TaiKhoanDAO.Instance.layTK(txt);
+                
+
+                if (tk == null || !tk.MatKhau.Contains(txtMatKhau.Text))
                 {
-                    string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
-                    fSinhVien f = new fSinhVien(sv);
-                    this.Hide();
-                    f.ShowDialog();
-                    this.Show();
+
+                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
+
                 }
                 else
                 {
-                    fQuanLy f = new fQuanLy();
-                    this.Hide();
-                    f.ShowDialog();
-                    this.Show();
-                }
+                    currAcc = tk.Taikhoan.ToString();
 
+                    if (tk.CapBac == 0)
+                    {
+                        string acc = "SV" + tk.Taikhoan;
+                        DBConnection.DangNhap(acc, tk.Taikhoan);
+                        string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
+                        fXemPhong f = new fXemPhong(sv);
+                        this.Hide();
+                        f.ShowDialog();
+                        this.Show();
+                    }
+                    else
+                    {
+                        DBConnection.DangNhap(tk.Taikhoan, tk.Taikhoan);
+                        fQuanLy f = new fQuanLy();
+                        this.Hide();
+                        f.ShowDialog();
+                        this.Show();
+                    }
+
+                }
             }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+            DBConnection.DangNhap("sa", "123456");
             fDangKy f = new fDangKy();
             this.Hide();
             f.ShowDialog();
             this.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

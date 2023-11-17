@@ -12,6 +12,10 @@ namespace QLSV.DAO
     {
 
         DBConnection dbConnec = new DBConnection();
+
+
+        public DataTable DanhSach(string toa)
+
         private static HopDongDAO instance;
         public static HopDongDAO Instance
         {
@@ -19,13 +23,16 @@ namespace QLSV.DAO
             private set => HopDongDAO.instance = value;
         }
         public DataTable DanhSach()
+
         {
-            return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong");
+            return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong where MaPhong like N'%" + toa + "%'");
         }
 
-        public DataTable TimKiem(string tk, string value)
+        public DataTable TimKiem(string tk, string value,string ql)
         {
-            string lenh = string.Format("SELECT * FROM SuKienDatPhong WHERE " +tk + " = '" +value+"'" );
+
+            string lenh = string.Format("SELECT * FROM SuKienDatPhong WHERE " +tk + " like N'%" + value+ "%' and MaQL = '" +ql +"'");
+
             return dbConnec.FormLoad(lenh);
         }
 

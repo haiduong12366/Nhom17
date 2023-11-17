@@ -22,21 +22,18 @@ namespace QLSV.DAO
 
 
         DBConnection dbConnec = new DBConnection();
-        public DataTable DanhSach()
+        public DataTable DanhSach(string Toa)
         {
-            return dbConnec.FormLoad("select * from XemBangSinhVien()");
-        }
-
-        public DataTable Loc(string col, string value)
-        {
-            string lenh = string.Format("SELECT * FROM SinhVien WHERE {0} = N'{1}'", col, value);
+            string lenh = string.Format("select * from XemBangSinhVien('{0}')", Toa);
             return dbConnec.FormLoad(lenh);
         }
-        public List<SinhVien> Search(string TK, string value)
+
+
+        public List<SinhVien> Search(string TK, string value,string toa)
         {
             List<SinhVien> list = new List<SinhVien>();
 
-            string query = "select * from SinhVien where " + TK + " like N'%" + value + "%'";
+            string query = "select * from SinhVien where " + TK + " like N'%" + value + "%'" + "and MaToa = '" + toa +"'";
 
             DataTable data = DBConnection.Instance.ExecuteQuery(query);
 

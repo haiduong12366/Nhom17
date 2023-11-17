@@ -15,6 +15,10 @@ namespace QLSV.DAO
     {
 
         DBConnection dbConnec = new DBConnection();
+
+
+        public DataTable DanhSach(string toa)
+
         private static HoaDonDAO instance;
         public static HoaDonDAO Instance
         {
@@ -22,8 +26,9 @@ namespace QLSV.DAO
             private set => HoaDonDAO.instance = value;
         }
         public DataTable DanhSach()
+
         {
-            return dbConnec.FormLoad("SELECT * FROM HoaDonDN");
+            return dbConnec.FormLoad("SELECT * FROM HoaDonDN where MaPhong like N'%" + toa + "%'");
         }
         public void Them(int MaHD,string MaPhong, int Thang)
         {
@@ -43,7 +48,7 @@ namespace QLSV.DAO
             string sqlStr = string.Format("UPDATE HoaDonDN SET TrangThai = " + 1 +" Where MaHD =" +MaHD);
             dbConnec.ThucThi(sqlStr);
         }
-        public DataTable TimKiem(int ktr, string MaPhong, int Thang)
+        public DataTable TimKiem(int ktr, string MaPhong, int Thang, string toa)
         {
             string sqlStr = null;
             if (MaPhong != "" && Thang == -1 && ktr == 0) sqlStr = string.Format("SELECT * FROM HoaDonDN Where MaPhong = '" + MaPhong + "'");
@@ -54,7 +59,7 @@ namespace QLSV.DAO
             if (MaPhong == "" && Thang != -1 && ktr == 1) sqlStr = string.Format("SELECT * FROM HoaDonDN Where Thang = " + Thang + " and TrangThai =1");
             if (MaPhong == "" && Thang != -1 && ktr == 2) sqlStr = string.Format("SELECT * FROM HoaDonDN Where Thang = " + Thang + " and TrangThai =0");
 
-            if (MaPhong == "" && Thang == -1 && ktr == 0) return DanhSach();
+            if (MaPhong == "" && Thang == -1 && ktr == 0) return DanhSach(toa);
             if (MaPhong == "" && Thang == -1 && ktr == 1) sqlStr = string.Format("SELECT * FROM HoaDonDN Where TrangThai= 1" );
             if (MaPhong == "" && Thang == -1 && ktr == 2) sqlStr = string.Format("SELECT * FROM HoaDonDN Where TrangThai= 0");
 

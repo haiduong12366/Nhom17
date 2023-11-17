@@ -180,6 +180,12 @@ namespace QLSV.Views
 
         }
 
+
+        private void fXemPhong_Load_1(object sender, EventArgs e)
+        {
+            
+        }
+
         private void cbthang3_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<HoaDonDN> list = HoaDonDAO.Instance.XemHoaDonSV(sv.Maphong, Convert.ToInt32(cbThang3.Text));

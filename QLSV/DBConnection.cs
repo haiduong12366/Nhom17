@@ -11,6 +11,8 @@ namespace QLSV
 {
     internal class DBConnection
     {
+
+
         private static DBConnection instance;
         public static DBConnection Instance
         {
@@ -18,11 +20,12 @@ namespace QLSV
             private set => DBConnection.instance = value;
         }
 
-       
+        static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
 
-        private string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID=sa;Password=haiduong";
-
-
+        public static void DangNhap(string user, string pass)
+        {
+            connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID="+user+";Password=" + pass;
+        }  
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
@@ -47,8 +50,6 @@ namespace QLSV
                         }
                     }
                 }
-
-
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -145,9 +146,19 @@ namespace QLSV
         }
 
 
-        public SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True");
+        public void updatestring(string user,string pass)
+        {
+            connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID="+ user+";Password=" + pass;
+        }
+
+
+
+
+
+        public SqlConnection conn = new SqlConnection(connectionSTR);
         public void ThucThi(string sqlStr)
         {
+            SqlConnection conn = new SqlConnection(connectionSTR);
             try
             {
                 conn.Open();
@@ -165,6 +176,7 @@ namespace QLSV
         }
         public DataTable FormLoad(string sqlStr)
         {
+            SqlConnection conn = new SqlConnection(connectionSTR);
             DataTable dataSet = new DataTable();
             try
             {
@@ -185,6 +197,7 @@ namespace QLSV
         }
         public object GetItem(string sqlStr)
         {
+            SqlConnection conn = new SqlConnection(connectionSTR);
             object result = new object();
             try
             {
