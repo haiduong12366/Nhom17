@@ -13,24 +13,25 @@ using System.Windows.Forms;
 
 namespace QLSV.Views
 {
-    
 
-    internal partial class fXemPhong : Form
+
+    internal partial class fSinhVien : Form
     {
         private string mssv;
-
+        SinhVien sv;
 
         private TaiKhoan tk;
 
         internal TaiKhoan Tk { get => tk; set => tk = value; }
 
         private byte[] anh;
-        public fXemPhong(string mssv)
+        public fSinhVien(string mssv)
         {
             InitializeComponent();
             this.mssv = mssv;
+            sv = SinhVienDAO.Instance.Loc(mssv);
             Load();
- 
+
         }
 
         void Load()
@@ -40,8 +41,9 @@ namespace QLSV.Views
             {
                 cbThang.Items.Add(i);
                 cbThang2.Items.Add(i);
+                cbThang3.Items.Add(i);
             }
-            SinhVien sv = SinhVienDAO.Instance.Loc(mssv);
+            sv = SinhVienDAO.Instance.Loc(mssv);
             txtTen.Text = sv.Ten;
             txtMaPhong.Text = sv.Maphong;
             cbThang.Text = today.Month.ToString();
@@ -53,10 +55,10 @@ namespace QLSV.Views
 
 
         }
-        
+
         void LoadSV()
         {
-            SinhVien sv = SinhVienDAO.Instance.Loc(mssv);
+            sv = SinhVienDAO.Instance.Loc(mssv);
             txtMaSv.Text = sv.Mssv;
             txtHoTen.Text = sv.Ten;
             dtpkNgaySinh.Value = sv.ngaySinh;
@@ -67,7 +69,26 @@ namespace QLSV.Views
             txtMaToa.Text = sv.Matoa;
             txtPhong.Text = sv.Maphong;
             anh = sv.Anh;
-            PB.Image = ByteArrayToImage(sv.Anh);
+            try
+            {
+                PB.Image = ByteArrayToImage(sv.Anh);
+            }
+            catch (Exception e) { }
+            LoadHopDong();
+        }
+
+        void LoadHopDong()
+        {
+            HopDong hopDong = HopDongDAO.Instance.TimKiemHopDongTheoSV(sv.Mssv);
+            if (hopDong != null)
+            {
+                tbMaPhong.Text = hopDong.MaPhong;
+                tbMssv.Text = hopDong.MaSV;
+                dtpkNhanPhong.Value = hopDong.NgayNhanPhong;
+                dtpkTraPhong.Value = hopDong.NgayTraPhong;
+                tbSoTien.Text = hopDong.Tien.ToString();
+                tbSoKy.Text = hopDong.SoKy.ToString();
+            }
         }
 
         private void btnXemDien_Click(object sender, EventArgs e)
@@ -85,7 +106,7 @@ namespace QLSV.Views
         }
 
 
-        
+
         private void btnSua_Click(object sender, EventArgs e)
         {
             string masv = txtMaSv.Text;
@@ -94,9 +115,9 @@ namespace QLSV.Views
             string cccd = txtCCCD.Text;
             string diachi = txtDiaChi.Text;
             string sdt = txtSDT.Text;
-            
+
             DateTime ngaysinh = dtpkNgaySinh.Value;
-            int count = SinhVienDAO.Instance.Sua(hoten, ngaysinh, gioitinh, cccd, diachi, sdt,anh, masv);
+            int count = SinhVienDAO.Instance.Sua(hoten, ngaysinh, gioitinh, cccd, diachi, sdt, anh, masv);
             if (count > 0)
             {
                 MessageBox.Show("Sửa thành công");
@@ -122,13 +143,13 @@ namespace QLSV.Views
 
         private void F_UpdateTK(object sender, SVEvent e)
         {
-            
+
             if (tk.MatKhau != e.Sv.MatKhau)
             {
-                MessageBox.Show("Vui lòng đăng nhập lại","Thông Báo");
+                MessageBox.Show("Vui lòng đăng nhập lại", "Thông Báo");
                 this.Close();
                 btnDangXuat.Click += btnDangXuat_Click;
-            }    
+            }
         }
         byte[] ImageToByteArray(Image img)
         {
@@ -159,7 +180,25 @@ namespace QLSV.Views
 
         }
 
+
         private void fXemPhong_Load_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbthang3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<HoaDonDN> list = HoaDonDAO.Instance.XemHoaDonSV(sv.Maphong, Convert.ToInt32(cbThang3.Text));
+            if (list != null)
+            {
+                dtgvHoaDon.DataSource = list;
+                dtgvHoaDon.Columns[0].Visible = false;
+            }
+
+        }
+
+
+        private void tabPage5_Click(object sender, EventArgs e)
         {
 
         }

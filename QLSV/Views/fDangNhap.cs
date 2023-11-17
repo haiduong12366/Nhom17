@@ -31,7 +31,9 @@ namespace QLSV.Views
 
                 if (tk == null || !tk.MatKhau.Contains(txtMatKhau.Text))
                 {
+
                     MessageBox.Show("Tài khoản hoặc mật khẩu không đúng");
+
                 }
                 else
                 {
