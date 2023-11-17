@@ -17,7 +17,7 @@ namespace QLSV.DAO
         DBConnection dbConnec = new DBConnection();
 
 
-        public DataTable DanhSach(string toa)
+        
 
         private static HoaDonDAO instance;
         public static HoaDonDAO Instance
@@ -25,8 +25,8 @@ namespace QLSV.DAO
             get { if (instance == null) instance = new HoaDonDAO(); return HoaDonDAO.instance; }
             private set => HoaDonDAO.instance = value;
         }
-        public DataTable DanhSach()
 
+        public DataTable DanhSach(string toa)
         {
             return dbConnec.FormLoad("SELECT * FROM HoaDonDN where MaPhong like N'%" + toa + "%'");
         }

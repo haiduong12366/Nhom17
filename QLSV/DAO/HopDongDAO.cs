@@ -14,16 +14,13 @@ namespace QLSV.DAO
         DBConnection dbConnec = new DBConnection();
 
 
-        public DataTable DanhSach(string toa)
-
         private static HopDongDAO instance;
         public static HopDongDAO Instance
         {
             get { if (instance == null) instance = new HopDongDAO(); return HopDongDAO.instance; }
             private set => HopDongDAO.instance = value;
         }
-        public DataTable DanhSach()
-
+        public DataTable DanhSach(string toa)
         {
             return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong where MaPhong like N'%" + toa + "%'");
         }
