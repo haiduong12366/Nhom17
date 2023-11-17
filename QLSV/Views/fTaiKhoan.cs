@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,16 +23,10 @@ namespace QLSV.Views
 
         private void fTaiKhoan_Load(object sender, EventArgs e)
         {
-            try
-            {
-                
-                taikhoan = fQuanLy.masv;
-                if (taikhoan == "") return;
-                txtTaiKhoan.Text = taikhoan;
-                tk = TaiKhoanDAO.Instance.layTK(taikhoan);
-                txtMatKhau.Text = tk.MatKhau;
-            }
-            catch (SqlException ex) { MessageBox.Show(ex.Message); }
+            taikhoan = fQuanLy.masv;
+            txtTaiKhoan.Text = taikhoan;
+            tk = TaiKhoanDAO.Instance.layTK(taikhoan);
+            txtMatKhau.Text = tk.MatKhau;
 
         }
 

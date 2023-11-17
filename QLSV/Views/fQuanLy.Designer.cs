@@ -120,7 +120,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.dgvHopDong = new System.Windows.Forms.DataGridView();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label30 = new System.Windows.Forms.Label();
             this.tabQLSV.SuspendLayout();
             this.tbQLSV.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1071,7 +1070,6 @@
             // 
             // tbHDTP
             // 
-            this.tbHDTP.Controls.Add(this.label30);
             this.tbHDTP.Controls.Add(this.grpHopDong);
             this.tbHDTP.Location = new System.Drawing.Point(4, 25);
             this.tbHDTP.Name = "tbHDTP";
@@ -1085,7 +1083,7 @@
             // 
             this.grpHopDong.Controls.Add(this.groupBox1);
             this.grpHopDong.Controls.Add(this.dgvHopDong);
-            this.grpHopDong.Location = new System.Drawing.Point(3, 75);
+            this.grpHopDong.Location = new System.Drawing.Point(6, 6);
             this.grpHopDong.Name = "grpHopDong";
             this.grpHopDong.Size = new System.Drawing.Size(1375, 311);
             this.grpHopDong.TabIndex = 1;
@@ -1148,19 +1146,6 @@
             this.dgvHopDong.RowTemplate.Height = 24;
             this.dgvHopDong.Size = new System.Drawing.Size(811, 284);
             this.dgvHopDong.TabIndex = 0;
-            // 
-            // label30
-            // 
-            this.label30.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Yellow;
-            this.label30.Location = new System.Drawing.Point(5, 3);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(1388, 69);
-            this.label30.TabIndex = 155;
-            this.label30.Text = "Hợp Đồng";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label30.Click += new System.EventHandler(this.label30_Click);
             // 
             // fQuanLy
             // 
@@ -1296,6 +1281,5 @@
         private System.Windows.Forms.TextBox txtTimKiemHD;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button txtTaiKhoan;
-        private System.Windows.Forms.Label label30;
     }
 }
