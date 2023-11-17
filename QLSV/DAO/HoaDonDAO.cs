@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QLSV.DAO
 {
@@ -13,7 +15,12 @@ namespace QLSV.DAO
     {
 
         DBConnection dbConnec = new DBConnection();
-
+        private static HoaDonDAO instance;
+        public static HoaDonDAO Instance
+        {
+            get { if (instance == null) instance = new HoaDonDAO(); return HoaDonDAO.instance; }
+            private set => HoaDonDAO.instance = value;
+        }
         public DataTable DanhSach()
         {
             return dbConnec.FormLoad("SELECT * FROM HoaDonDN");
@@ -58,6 +65,28 @@ namespace QLSV.DAO
 
 
             return dbConnec.FormLoad(sqlStr);
+        }
+
+        internal List<HoaDonDN> XemHoaDonSV(string maphong, int thang)
+        {
+            try { 
+            List<HoaDonDN> list =  new List<HoaDonDN>();
+            string sql = string.Format("UTP_XemHoaDonSV @maphong , @thang ");
+            DataTable data = DBConnection.Instance.ExecuteQuery(sql,new object[] { maphong , thang });
+            foreach (DataRow dr in data.Rows)
+            {
+                HoaDonDN hoaDon = new HoaDonDN(dr);
+
+                list.Add(hoaDon);
+            }
+            return list;
+
+
+            }catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "Message");
+                return null;
+            }
         }
     }
 }

@@ -77,7 +77,7 @@ namespace QLSV
             int soky = Convert.ToInt32(cbSoKy.SelectedItem.ToString());
 
             try { 
-                string sql = string.Format("UTP_InsertStudent @masv , @hoten , @ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky , @anh ");
+                string sql = string.Format("UTP_ThemSinhVien @masv , @hoten , @ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky , @anh ");
                 DBConnection.Instance.Use_PROC(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
             }catch(SqlException ex)
             {
