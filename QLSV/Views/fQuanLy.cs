@@ -657,7 +657,6 @@ namespace QLSV.Views
             try
             {
                // DBConnection.DangNhap("sa", "haiduong");
-                 MessageBox.Show(DBConnection.Instance.ConnectionSTR);
                 svDao.Duyet(txtMSV.Text);
                 if (currAcc != "admin")
                 {

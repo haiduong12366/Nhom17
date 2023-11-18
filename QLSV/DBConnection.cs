@@ -28,7 +28,7 @@ namespace QLSV
 
         // Data Source=Tlocalhost;Initial Catalog=QLSV;Persist Security Info=True;User ID=sa;Password=12345
         {
-            ConnectionSTR = "Data Source = localhost; Initial Catalog = QLSV; Persist Security Info = True; User ID = "+user+"; Password = " + pass;
+            ConnectionSTR = "Data Source = localhost; Initial Catalog = QLSV;Integrated Security=True; User ID = " + user+"; Password = " + pass;
         }  
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
@@ -38,6 +38,7 @@ namespace QLSV
             
             using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
+                MessageBox.Show("DBConnectaa: " + DBConnection.Instance.ConnectionSTR);
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(query, connection);
