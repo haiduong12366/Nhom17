@@ -37,7 +37,7 @@ namespace QLSV.DAO
         public void Duyet(string ma)
         {
             string lenh = string.Format("update SinhVien set duyet = 1 where MaSV = '{0}'", ma);
-            DBConnection.Instance.ExecuteQuery(lenh);
+            dbConnec.ThucThi(lenh);
         }
 
         public List<SinhVien> Search(string TK, string value,string toa)

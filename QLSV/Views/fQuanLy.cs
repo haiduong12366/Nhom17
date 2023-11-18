@@ -35,6 +35,11 @@ namespace QLSV.Views
         KyLuatDAO klDao = new KyLuatDAO();
         KyLuat kl = new KyLuat();
 
+        giahanDAO gdDao = new giahanDAO();
+
+        PhongDAO pDao = new PhongDAO();
+        Phong p;
+
         string currAcc = null;
         QuanLy ql ;
         static int dem = 0;
@@ -54,20 +59,8 @@ namespace QLSV.Views
             try
             {
                 currAcc = fDangNhap.currAcc;
+    
                
-                if (currAcc == "admin")
-                {
-                    dgvSinhVien.DataSource = svDao.DanhSach();
-                    dgvTienDien.DataSource = tdDao.DanhSach();
-                    dgvTienNuoc.DataSource = tnDao.DanhSach();
-                    dgvHoaDon.DataSource = hdDAO.DanhSach();
-                    dgvHopDong.DataSource = HopDongDAO.DanhSach();
-                    dgvKyLuat.DataSource = klDao.DanhSach();
-                    DoiTenGV();
-                    DoiTenDN();
-                }
-                else
-                {
                     Console.WriteLine(currAcc);
 
                     ql = TaiKhoanDAO.Instance.layTT(currAcc);
@@ -80,9 +73,11 @@ namespace QLSV.Views
                     dgvHopDong.DataSource = HopDongDAO.DanhSach(ql.MaToa);
                     dgvKyLuat.DataSource = klDao.DanhSach(ql.MaToa);
                     txtMaToaKL.Text = ql.MaToa;
+                    dgvPhong.DataSource =PhongDAO.Instance.layMaPhong(ql.MaToa);
+
                     DoiTenGV();
                     DoiTenDN();
-                }
+                
          
             }
             catch(Exception ex)
@@ -100,12 +95,10 @@ namespace QLSV.Views
                 DBConnection.Instance.DangNhap("sa", "haiduong");
                 ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
                 svDao.Xoa(ns);
-                if (currAcc != "admin")
-                {
-                    dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
+
+                   dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
                     DBConnection.Instance.DangNhap(ql.Maql, ql.Maql);
-                }
-                else dgvSinhVien.DataSource = svDao.DanhSach();
+
             }
             catch(Exception ex)
             {
@@ -116,7 +109,7 @@ namespace QLSV.Views
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if(currAcc != "admin")
+
             if(txtMaToa.Text != ql.MaToa )
             {
                 MessageBox.Show("Sinh viên phải thuộc tòa " + ql.MaToa);
@@ -129,10 +122,8 @@ namespace QLSV.Views
 
                 SinhVienDAO.Instance.CapNhat(ns);
 
-                if(currAcc != "admin")
                 dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
-                else
-                    dgvSinhVien.DataSource = svDao.DanhSach();
+
             }
             catch(Exception ex)
             {
@@ -172,6 +163,12 @@ namespace QLSV.Views
             for (int i = 0; i < thuoctinh3.Length; i++)
             {
                 dgvKyLuat.Columns[i].HeaderText = thuoctinh3[i];
+            }
+
+            string[] thuoctinh4 = { "Mã Phòng", "Loại Phòng", "Mã Tòa", "Số Người Đang Ở"};
+            for (int i = 0; i < thuoctinh4.Length; i++)
+            {
+                dgvKyLuat.Columns[i].HeaderText = thuoctinh4[i];
             }
         }
 
@@ -230,7 +227,7 @@ namespace QLSV.Views
         private void btnThemTD_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongTD.Text;
-            if(currAcc != "admin")
+
                  if (!content.Contains(ql.MaToa))
                  {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -240,9 +237,9 @@ namespace QLSV.Views
             {
                 TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
                 tdDao.Them(TienDien);
-                if(currAcc != "admin")
+
                 dgvTienDien.DataSource = tdDao.DanhSach(ql.MaToa);
-                else dgvTienDien.DataSource = tdDao.DanhSach();
+
             }
             catch(Exception ex)
             {
@@ -253,7 +250,7 @@ namespace QLSV.Views
         private void btnXoaTD_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongTD.Text;
-            if(currAcc != "admin")
+
             if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -262,10 +259,9 @@ namespace QLSV.Views
             try
             {
                 TienDien = new TienDien(txtMaPhongTD.Text, int.Parse(cboThangTD.Text), int.Parse(txtDienDauThang.Text), int.Parse(txtDienCuoiThang.Text));
-                tdDao.Xoa(TienDien);
-                if(currAcc != "admin")
+
                 dgvTienDien.DataSource = tdDao.DanhSach(ql.MaToa);
-                else dgvTienDien.DataSource = tdDao.DanhSach();
+
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -290,7 +286,7 @@ namespace QLSV.Views
         private void btnTimKiemTD_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongTD.Text;
-            if(currAcc != "admin")
+
             if(!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -322,7 +318,7 @@ namespace QLSV.Views
         private void btnThemTN_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongTN.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -332,9 +328,9 @@ namespace QLSV.Views
             {
                 TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
                 tnDao.Them(TienNuoc);
-                if (currAcc != "admin")
+
                     dgvTienNuoc.DataSource = tnDao.DanhSach(ql.MaToa);
-                else dgvTienNuoc.DataSource = tnDao.DanhSach();
+
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
 
@@ -343,7 +339,7 @@ namespace QLSV.Views
         private void btnXoaTN_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongTN.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -353,9 +349,9 @@ namespace QLSV.Views
             {
                 TienNuoc = new TienNuoc(txtMaPhongTN.Text, int.Parse(cboThangTN.Text), int.Parse(txtNuocDauThang.Text), int.Parse(txtNuocCuoiThang.Text));
                 tnDao.Xoa(TienNuoc);
-                if (currAcc != "admin")
+
                     dgvTienNuoc.DataSource = tnDao.DanhSach(ql.MaToa);
-                else dgvTienNuoc.DataSource = tnDao.DanhSach();
+
             }
             catch(Exception ex)
             {
@@ -367,7 +363,7 @@ namespace QLSV.Views
         private void btnTimKiemTN_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongTN.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -399,7 +395,7 @@ namespace QLSV.Views
         private void btnTaoHD_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongHD.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -408,9 +404,9 @@ namespace QLSV.Views
             try
             {
                 hdDAO.Them(Convert.ToInt32(txtMaHD.Text), txtMaPhongHD.Text, Convert.ToInt32(cboThangHD.Text));
-                if(currAcc != "admin")
+
                 dgvHoaDon.DataSource = hdDAO.DanhSach(ql.MaToa);
-                else dgvHoaDon.DataSource = hdDAO.DanhSach();
+
             }
             catch(Exception ex) {MessageBox.Show(ex.Message); }
         }
@@ -418,7 +414,7 @@ namespace QLSV.Views
         private void btnXacNhanDT_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongHD.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -427,9 +423,9 @@ namespace QLSV.Views
             try
             {
                 hdDAO.XacNhan(Convert.ToInt32(txtMaHD.Text), txtMaPhongHD.Text, Convert.ToInt32(cboThangHD.Text));
-                if (currAcc != "admin")
+
                     dgvHoaDon.DataSource = hdDAO.DanhSach(ql.MaToa);
-                else dgvHoaDon.DataSource = hdDAO.DanhSach();
+
             }
             catch(Exception ex)
             {
@@ -458,7 +454,7 @@ namespace QLSV.Views
         private void btnXoaHD_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongHD.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -467,9 +463,9 @@ namespace QLSV.Views
             try
             {
                 hdDAO.Xoa(Convert.ToInt32(txtMaHD.Text));
-                if(currAcc != "admin")
+
                 dgvHoaDon.DataSource = hdDAO.DanhSach(ql.MaToa);
-                else dgvHoaDon.DataSource = hdDAO.DanhSach();
+
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -477,7 +473,7 @@ namespace QLSV.Views
         private void btnTimKiemHD_Click(object sender, EventArgs e)
         {
             string content = txtMaPhongHD.Text;
-            if (currAcc != "admin")
+
                 if (!content.Contains(ql.MaToa))
             {
                 MessageBox.Show("Phòng không thuộc tòa quản lý");
@@ -492,9 +488,9 @@ namespace QLSV.Views
                 if (cboLoai.Text == "Chưa Đóng Tiền") ktr = 2;
                 if (cboThangHD.Text == "") thang = -1;
                 else thang = Convert.ToInt32(cboThangHD.Text);
-                if(currAcc != "admin")
+
                 dgvHoaDon.DataSource = hdDAO.TimKiem(ktr, txtMaPhongHD.Text, thang,ql.MaToa);
-                else dgvHoaDon.DataSource = hdDAO.TimKiem(ktr, txtMaPhongHD.Text, thang,"");
+
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -638,16 +634,18 @@ namespace QLSV.Views
         {
             if (dem == 0)
             {
-                if(currAcc != "admin")
+
                 dgvSinhVien.DataSource = svDao.DanhSachDuyet(ql.MaToa);
-                else dgvSinhVien.DataSource = svDao.DanhSachDuyet();
+
                 dem = 1;
+                grpDanhSach.Text = "Danh Sách Duyệt";
             }
             else
             {
-                if(currAcc != "admin")
+
                 dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
-                else dgvSinhVien.DataSource = svDao.DanhSach();
+
+                grpDanhSach.Text = "Danh Sách";
                 dem = 0;
             }
         }
@@ -656,14 +654,19 @@ namespace QLSV.Views
         {
             try
             {
-               // DBConnection.DangNhap("sa", "haiduong");
-                svDao.Duyet(txtMSV.Text);
-                if (currAcc != "admin")
+                if (dem == 1)
                 {
+                    svDao.Duyet(txtMSV.Text);
                     dgvSinhVien.DataSource = svDao.DanhSachDuyet(ql.MaToa);
-                   // DBConnection.DangNhap(ql.Maql, ql.Maql);
                 }
-                else dgvSinhVien.DataSource = svDao.DanhSachDuyet();
+                if (dem1 == 1)
+                {
+                    gdDao.duyet(txtMSV.Text);
+                    dgvSinhVien.DataSource = gdDao.DanhSach();
+                }
+
+                
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
            
@@ -673,5 +676,82 @@ namespace QLSV.Views
         {
 
         }
+        static int dem1 = 0;
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dem1 == 0)
+            {
+
+                dgvSinhVien.DataSource = gdDao.DanhSach();
+                dem1 = 1;
+                grpDanhSach.Text = "Danh Sách Gia Hạn";
+            }
+            else
+            {
+
+                dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
+
+                grpDanhSach.Text = "Danh Sách";
+                dem1 = 0;
+            }
+        }
+
+        private void dgvPhong_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow r = dgvPhong.SelectedRows[0];
+
+                txtMaPhongp.Text = r.Cells[0].Value.ToString();
+                txtLoaiPhong.Text = r.Cells[1].Value.ToString();
+                txtMaToap.Text = r.Cells[2].Value.ToString();
+                txtSoNguoiO.Text = r.Cells[3].Value.ToString();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void btnXoaP_Click(object sender, EventArgs e)
+        {
+            pDao.Xoa(txtMaToap.Text,txtSoNguoiO.Text);
+            dgvPhong.DataSource = PhongDAO.Instance.layMaPhong(ql.MaToa);
+        }
+
+        private void btnThemP_Click(object sender, EventArgs e)
+        {
+            if(txtMaToap.Text != ql.MaToa)
+            {
+                MessageBox.Show("Phòng không thuộc tòa quản lý");
+            }
+            pDao.them(txtMaPhongp.Text, txtLoaiPhong.Text, txtMaToap.Text);
+            dgvPhong.DataSource = PhongDAO.Instance.layMaPhong(ql.MaToa);
+
+        }
+
+        private void txtTKPhong_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTKPhong.Text == "") 
+            {
+                dgvPhong.DataSource = PhongDAO.Instance.layMaPhong(ql.MaToa);
+                return;
+            }
+            dgvPhong.DataSource = pDao.tim(txtTKPhong.Text);
+
+        }
+
+        private void cboThangTT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cboThangTT.Text == "" )
+            {
+                txtTongTDN.Text = "";
+                txtTienDaThu.Text = "";
+                txtTienConLai.Text = "";
+
+                return;
+            }
+            txtTongTDN.Text = hdDAO.TongTien(int.Parse(cboThangTT.Text),ql.MaToa).ToString();
+            txtTienDaThu.Text = hdDAO.TienDaDong(int.Parse(cboThangTT.Text), ql.MaToa).ToString();
+            txtTienConLai.Text = (int.Parse(txtTongTDN.Text) - int.Parse(txtTienDaThu.Text)).ToString();        }
     }   
 }

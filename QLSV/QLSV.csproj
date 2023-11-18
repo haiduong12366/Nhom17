@@ -181,6 +181,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\giahanDAO.cs" />
     <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\HopDongDAO.cs" />
     <Compile Include="DAO\KyLuatDAO.cs" />

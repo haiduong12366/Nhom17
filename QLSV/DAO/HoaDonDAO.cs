@@ -61,7 +61,7 @@ namespace QLSV.DAO
             if (MaPhong == "" && Thang != -1 && ktr == 2) sqlStr = string.Format("SELECT * FROM HoaDonDN Where Thang = " + Thang + " and TrangThai =0");
 
             if (MaPhong == "" && Thang == -1 && ktr == 0) return DanhSach(toa);
-            if (MaPhong == "" && Thang == -1 && ktr == 0 && toa == "") return DanhSach();
+
 
             if (MaPhong == "" && Thang == -1 && ktr == 1) sqlStr = string.Format("SELECT * FROM HoaDonDN Where TrangThai= 1");
             if (MaPhong == "" && Thang == -1 && ktr == 2) sqlStr = string.Format("SELECT * FROM HoaDonDN Where TrangThai= 0");
@@ -103,6 +103,30 @@ namespace QLSV.DAO
             return dbConnec.FormLoad("SELECT * FROM HoaDonDN");
         }
 
+        public Decimal TongTien(int thang,string MaPhong)
+        {
+            string sqlStr = string.Format("SELECT * FROM HoaDonDN Where MaPhong like N'%" + MaPhong + "%'");
+            DataTable a = dbConnec.FormLoad(sqlStr);
+            Decimal sum = 0;
+            foreach (DataRow row in a.Rows)
+            {
+                sum += Convert.ToDecimal(row["TongTien"]);
+            }
 
+            return sum;
+        }
+
+        public Decimal TienDaDong(int thang, string MaPhong)
+        {
+            string sqlStr = string.Format("SELECT * FROM HoaDonDN Where MaPhong like N'%" + MaPhong + "%' and TrangThai = 1" );
+            DataTable a = dbConnec.FormLoad(sqlStr);
+            Decimal sum = 0;
+            foreach (DataRow row in a.Rows)
+            {
+                sum += Convert.ToDecimal(row["TongTien"]);
+            }
+
+            return sum;
+        }
     }
 }

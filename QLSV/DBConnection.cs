@@ -22,7 +22,7 @@ namespace QLSV
 
         public string ConnectionSTR { get => connectionSTR; set => connectionSTR = value; }
 
-        string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
+        static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
 
         public  void DangNhap(string user, string pass)
 
@@ -38,7 +38,6 @@ namespace QLSV
             
             using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
-                MessageBox.Show("DBConnectaa: " + DBConnection.Instance.ConnectionSTR);
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -166,9 +165,9 @@ namespace QLSV
                 SqlCommand cmd = new SqlCommand(sqlStr, conn);
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException exc)
+            catch (Exception ex)
             {
-                MessageBox.Show("Thuc thi that bai\n" + exc);
+                MessageBox.Show("Error: " + ex.Message, "Message");
             }
             finally
             {
