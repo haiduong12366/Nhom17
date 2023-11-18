@@ -113,6 +113,8 @@
             this.dgvSinhVien = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grpTTSV = new System.Windows.Forms.GroupBox();
+            this.btnDuyet = new System.Windows.Forms.Button();
+            this.btnDSduyet = new System.Windows.Forms.Button();
             this.txtTaiKhoan = new System.Windows.Forms.Button();
             this.grbTimKiem = new System.Windows.Forms.GroupBox();
             this.cboLoaiTimKiem = new System.Windows.Forms.ComboBox();
@@ -153,8 +155,6 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.btnDSduyet = new System.Windows.Forms.Button();
-            this.btnDuyet = new System.Windows.Forms.Button();
             this.tbThongTin.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -566,16 +566,17 @@
             "Tất cả",
             "Đã Đóng Tiền",
             "Chưa Đóng Tiền"});
-            this.cboLoai.Location = new System.Drawing.Point(1195, 279);
+            this.cboLoai.Location = new System.Drawing.Point(1219, 279);
             this.cboLoai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboLoai.Name = "cboLoai";
             this.cboLoai.Size = new System.Drawing.Size(121, 24);
             this.cboLoai.TabIndex = 29;
             this.cboLoai.Text = "Tất cả";
+            this.cboLoai.SelectedIndexChanged += new System.EventHandler(this.cboLoai_SelectedIndexChanged);
             // 
             // btnTimKiemHD
             // 
-            this.btnTimKiemHD.Location = new System.Drawing.Point(1099, 271);
+            this.btnTimKiemHD.Location = new System.Drawing.Point(1109, 271);
             this.btnTimKiemHD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTimKiemHD.Name = "btnTimKiemHD";
             this.btnTimKiemHD.Size = new System.Drawing.Size(75, 39);
@@ -586,10 +587,10 @@
             // 
             // btnXacNhanDT
             // 
-            this.btnXacNhanDT.Location = new System.Drawing.Point(981, 271);
+            this.btnXacNhanDT.Location = new System.Drawing.Point(997, 271);
             this.btnXacNhanDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXacNhanDT.Name = "btnXacNhanDT";
-            this.btnXacNhanDT.Size = new System.Drawing.Size(85, 39);
+            this.btnXacNhanDT.Size = new System.Drawing.Size(85, 50);
             this.btnXacNhanDT.TabIndex = 27;
             this.btnXacNhanDT.Text = "Xác Nhận Đóng Tiền";
             this.btnXacNhanDT.UseVisualStyleBackColor = true;
@@ -600,7 +601,7 @@
             this.btnXoaHD.Location = new System.Drawing.Point(871, 271);
             this.btnXoaHD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaHD.Name = "btnXoaHD";
-            this.btnXoaHD.Size = new System.Drawing.Size(75, 39);
+            this.btnXoaHD.Size = new System.Drawing.Size(96, 50);
             this.btnXoaHD.TabIndex = 26;
             this.btnXoaHD.Text = "Xóa Hóa Đơn";
             this.btnXoaHD.UseVisualStyleBackColor = true;
@@ -1197,6 +1198,30 @@
             this.grpTTSV.TabStop = false;
             this.grpTTSV.Text = "Thông Tin Chi Tiết";
             // 
+            // btnDuyet
+            // 
+            this.btnDuyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDuyet.Location = new System.Drawing.Point(175, 520);
+            this.btnDuyet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(96, 52);
+            this.btnDuyet.TabIndex = 156;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.UseVisualStyleBackColor = true;
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
+            // 
+            // btnDSduyet
+            // 
+            this.btnDSduyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDSduyet.Location = new System.Drawing.Point(8, 520);
+            this.btnDSduyet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDSduyet.Name = "btnDSduyet";
+            this.btnDSduyet.Size = new System.Drawing.Size(155, 52);
+            this.btnDSduyet.TabIndex = 155;
+            this.btnDSduyet.Text = "Danh sách duyệt";
+            this.btnDSduyet.UseVisualStyleBackColor = true;
+            this.btnDSduyet.Click += new System.EventHandler(this.btnDSduyet_Click);
+            // 
             // txtTaiKhoan
             // 
             this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1629,30 +1654,6 @@
             this.label32.Size = new System.Drawing.Size(155, 31);
             this.label32.TabIndex = 169;
             this.label32.Text = "Mã Quản Lý";
-            // 
-            // btnDSduyet
-            // 
-            this.btnDSduyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSduyet.Location = new System.Drawing.Point(8, 520);
-            this.btnDSduyet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDSduyet.Name = "btnDSduyet";
-            this.btnDSduyet.Size = new System.Drawing.Size(155, 52);
-            this.btnDSduyet.TabIndex = 155;
-            this.btnDSduyet.Text = "Danh sách duyệt";
-            this.btnDSduyet.UseVisualStyleBackColor = true;
-            this.btnDSduyet.Click += new System.EventHandler(this.btnDSduyet_Click);
-            // 
-            // btnDuyet
-            // 
-            this.btnDuyet.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDuyet.Location = new System.Drawing.Point(175, 520);
-            this.btnDuyet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDuyet.Name = "btnDuyet";
-            this.btnDuyet.Size = new System.Drawing.Size(96, 52);
-            this.btnDuyet.TabIndex = 156;
-            this.btnDuyet.Text = "Duyệt";
-            this.btnDuyet.UseVisualStyleBackColor = true;
-            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // fQuanLy
             // 

@@ -20,11 +20,15 @@ namespace QLSV
             private set => DBConnection.instance = value;
         }
 
-        static string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
+        public string ConnectionSTR { get => connectionSTR; set => connectionSTR = value; }
 
-        public static void DangNhap(string user, string pass)
+        string connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;Integrated Security=True";
+
+        public  void DangNhap(string user, string pass)
+
+        // Data Source=Tlocalhost;Initial Catalog=QLSV;Persist Security Info=True;User ID=sa;Password=12345
         {
-            connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID="+user+";Password=" + pass;
+            ConnectionSTR = "Data Source = localhost; Initial Catalog = QLSV; Persist Security Info = True; User ID = "+user+"; Password = " + pass;
         }  
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
@@ -32,7 +36,7 @@ namespace QLSV
 
             DataTable data = new DataTable();
             
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
@@ -66,7 +70,7 @@ namespace QLSV
 
             int data = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
@@ -92,7 +96,7 @@ namespace QLSV
         }
         public void Use_PROC(string query, object[] parameter = null)
         {
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
@@ -120,7 +124,7 @@ namespace QLSV
 
             object data = 0;
 
-            using (SqlConnection connection = new SqlConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(ConnectionSTR))
             {
                 connection.Open();
 
@@ -151,10 +155,10 @@ namespace QLSV
 
 
 
-        public SqlConnection conn = new SqlConnection(connectionSTR);
+        public SqlConnection conn = new SqlConnection();
         public void ThucThi(string sqlStr)
         {
-            SqlConnection conn = new SqlConnection(connectionSTR);
+             conn = new SqlConnection(ConnectionSTR);
             try
             {
                 conn.Open();
@@ -172,7 +176,7 @@ namespace QLSV
         }
         public DataTable FormLoad(string sqlStr)
         {
-            SqlConnection conn = new SqlConnection(connectionSTR);
+             conn = new SqlConnection(ConnectionSTR);
             DataTable dataSet = new DataTable();
             try
             {
@@ -193,7 +197,7 @@ namespace QLSV
         }
         public object GetItem(string sqlStr)
         {
-            SqlConnection conn = new SqlConnection(connectionSTR);
+            conn = new SqlConnection(ConnectionSTR);
             object result = new object();
             try
             {

@@ -45,7 +45,7 @@
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(181, 22);
             this.txtTaiKhoan.TabIndex = 0;
-            this.txtTaiKhoan.Text = "QL00A";
+            this.txtTaiKhoan.Text = "admin";
             // 
             // txtMatKhau
             // 
@@ -54,7 +54,7 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(181, 22);
             this.txtMatKhau.TabIndex = 1;
-            this.txtMatKhau.Text = "QL00A";
+            this.txtMatKhau.Text = "admin";
             // 
             // btnDangNhap
             // 

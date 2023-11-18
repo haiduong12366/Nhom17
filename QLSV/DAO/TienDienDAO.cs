@@ -48,6 +48,9 @@ namespace QLSV.DAO
             dbConnec.ThucThi(sqlStr);
 
         }
-
+        public DataTable DanhSach()
+        {
+            return dbConnec.FormLoad("SELECT * FROM TienDien  ");
+        }
     }
 }

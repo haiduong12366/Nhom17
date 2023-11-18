@@ -43,7 +43,7 @@ namespace QLSV.Views
                     if (tk.CapBac == 0)
                     {
                         string acc = "SV" + tk.Taikhoan;
-                        DBConnection.DangNhap(acc, tk.Taikhoan);
+                        DBConnection.Instance.DangNhap(acc, tk.Taikhoan);
                         string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
                         UserSession.LoginUser(SinhVienDAO.Instance.Loc(sv));
                         fSinhVien f = new fSinhVien();
@@ -53,7 +53,8 @@ namespace QLSV.Views
                     }
                     else if (tk.CapBac == 1)
                     {
-                        DBConnection.DangNhap(tk.Taikhoan, tk.Taikhoan);
+                        MessageBox.Show(tk.Taikhoan);
+                        DBConnection.Instance.DangNhap(tk.Taikhoan, tk.Taikhoan);
                         fQuanLy f = new fQuanLy();
                         this.Hide();
                         f.ShowDialog();
@@ -61,11 +62,17 @@ namespace QLSV.Views
                     }
                     else
                     {
-                        DBConnection.DangNhap("sa", "haiduong");
-                        fAdmin f = new fAdmin();
+                        DBConnection.Instance.DangNhap("sa", "haiduong");
+                         fAdmin f = new fAdmin();
+                          this.Hide();
+                          f.ShowDialog();
+                          this.Show();
+                        
+                      /*  fQuanLy f = new fQuanLy();
                         this.Hide();
                         f.ShowDialog();
                         this.Show();
+                      */
                     }
 
                 }
@@ -77,7 +84,7 @@ namespace QLSV.Views
         {
             try
             {
-                DBConnection.DangNhap("sa", "123456");
+                DBConnection.Instance.DangNhap("sa", "haiduong");
                 fDangKy f = new fDangKy();
                 this.Hide();
                 f.ShowDialog();

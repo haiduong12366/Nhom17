@@ -65,5 +65,9 @@ namespace QLSV.DAO
                 return -1;
             }
         }
+        public DataTable DanhSach()
+        {
+            return dbConnec.FormLoad("SELECT * FROM SuKienDatPhong ");
+        }
     }
 }
