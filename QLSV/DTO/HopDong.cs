@@ -13,7 +13,7 @@ namespace QLSV.DTO
         int maSK;
         string maPhong;
         string maSV;
-        string maQL;
+        string maToa;
         int soKy;
         DateTime ngayNhanPhong;
         DateTime ngayTraPhong;
@@ -25,7 +25,7 @@ namespace QLSV.DTO
             this.MaSK = Convert.ToInt32(row["MaSK"].ToString());
             this.maPhong = row["MaPhong"].ToString();
             this.maSV = row["MaSV"].ToString();
-            this.maQL = row["MaQL"].ToString();
+            this.maToa = row["MaToa"].ToString();
             this.soKy = Convert.ToInt32( row["SoKy"].ToString());
             this.ngayNhanPhong = (DateTime)row["NgayNhanPhong"];
             this.ngayTraPhong =(DateTime) row["NgayTraPhong"];
@@ -36,7 +36,7 @@ namespace QLSV.DTO
      
         public string MaPhong { get => maPhong; set => maPhong = value; }
         public string MaSV { get => maSV; set => maSV = value; }
-        public string MaQL { get => maQL; set => maQL = value; }
+        public string MaToa { get => maToa; set => maToa = value; }
         public int SoKy { get => soKy; set => soKy = value; }
         public DateTime NgayNhanPhong { get => ngayNhanPhong; set => ngayNhanPhong = value; }
         public DateTime NgayTraPhong { get => ngayTraPhong; set => ngayTraPhong = value; }

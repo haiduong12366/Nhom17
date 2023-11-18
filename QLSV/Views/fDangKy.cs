@@ -18,7 +18,6 @@ namespace QLSV
         void Load()
         {
             LoadDTPK();
-            LoadMaToa();
             LoadGioiTinh();
             LoadSoKy();
         }
@@ -35,7 +34,8 @@ namespace QLSV
         }
         void LoadMaToa()
         {
-            cbMaToa.DataSource = ToaDAO.Instance.layMaToa();
+            string gioitinh = (cbGioiTinh.Text == "Nam") ? "nam":"nu";
+            cbMaToa.DataSource = ToaDAO.Instance.layMaToa(gioitinh);
             cbMaToa.DisplayMember = "TenToa";
 
         }
@@ -79,7 +79,10 @@ namespace QLSV
             try { 
                 string sql = string.Format("UTP_ThemSinhVien @masv , @hoten , @ngaysinh , @gioitinh , @cccd , @diachi , @sdt , @matoa , @maphong , @soky , @anh ");
                 DBConnection.Instance.Use_PROC(sql, new object[] { masv, hoten,ngaysinh, gioitinh, cccd, diachi, sdt, matoa, maphong, soky, anh });
-            }catch(SqlException ex)
+                MessageBox.Show("Đăng Ký thành công" , "Message");
+                this.Close();
+            }
+            catch(SqlException ex)
             {
                 MessageBox.Show("Error: " + ex.Message,"Message");
             }
@@ -115,5 +118,14 @@ namespace QLSV
             return a;
         }
 
+        private void fDangKy_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMaToa();
+        }
     }
 }

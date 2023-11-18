@@ -50,10 +50,18 @@ namespace QLSV.Views
                         f.ShowDialog();
                         this.Show();
                     }
-                    else
+                    else if (tk.CapBac == 1)
                     {
                         DBConnection.DangNhap(tk.Taikhoan, tk.Taikhoan);
                         fQuanLy f = new fQuanLy();
+                        this.Hide();
+                        f.ShowDialog();
+                        this.Show();
+                    }
+                    else
+                    {
+                        DBConnection.DangNhap("sa", "haiduong");
+                        fAdmin f = new fAdmin();
                         this.Hide();
                         f.ShowDialog();
                         this.Show();
