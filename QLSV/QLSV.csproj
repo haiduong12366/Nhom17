@@ -203,6 +203,18 @@
     <Compile Include="DTO\TienNuoc.cs" />
     <Compile Include="DTO\Toa.cs" />
     <Compile Include="DTO\UserSession.cs" />
+    <Compile Include="Views\fAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\fAdmin.Designer.cs">
+      <DependentUpon>fAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\fThemQuanLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\fThemQuanLy.Designer.cs">
+      <DependentUpon>fThemQuanLy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\fXemKyLuat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +265,42 @@
     <Compile Include="Views\fSinhVien.Designer.cs">
       <DependentUpon>fSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\fThemToa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\fThemToa.Designer.cs">
+      <DependentUpon>fThemToa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC\UcDienNuoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC\UcDienNuoc.Designer.cs">
+      <DependentUpon>UcDienNuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC\UcHopDong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC\UcHopDong.Designer.cs">
+      <DependentUpon>UcHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC\UcQuanLi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC\UcQuanLi.Designer.cs">
+      <DependentUpon>UcQuanLi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UC\UcToa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UC\UcToa.Designer.cs">
+      <DependentUpon>UcToa.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\fAdmin.resx">
+      <DependentUpon>fAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\fThemQuanLy.resx">
+      <DependentUpon>fThemQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\fXemKyLuat.resx">
       <DependentUpon>fXemKyLuat.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +334,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\fSinhVien.resx">
       <DependentUpon>fSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\fThemToa.resx">
+      <DependentUpon>fThemToa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC\UcDienNuoc.resx">
+      <DependentUpon>UcDienNuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC\UcHopDong.resx">
+      <DependentUpon>UcHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC\UcQuanLi.resx">
+      <DependentUpon>UcQuanLi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UC\UcToa.resx">
+      <DependentUpon>UcToa.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

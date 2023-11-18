@@ -67,7 +67,7 @@ namespace QLSV
             // 
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKy.Location = new System.Drawing.Point(539, 256);
-            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(182, 46);
             this.btnDangKy.TabIndex = 27;
@@ -79,7 +79,7 @@ namespace QLSV
             // 
             this.cbSoKy.FormattingEnabled = true;
             this.cbSoKy.Location = new System.Drawing.Point(539, 210);
-            this.cbSoKy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSoKy.Margin = new System.Windows.Forms.Padding(2);
             this.cbSoKy.Name = "cbSoKy";
             this.cbSoKy.Size = new System.Drawing.Size(182, 21);
             this.cbSoKy.TabIndex = 26;
@@ -88,7 +88,7 @@ namespace QLSV
             // 
             this.cbMaPhong.FormattingEnabled = true;
             this.cbMaPhong.Location = new System.Drawing.Point(539, 168);
-            this.cbMaPhong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaPhong.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaPhong.Name = "cbMaPhong";
             this.cbMaPhong.Size = new System.Drawing.Size(182, 21);
             this.cbMaPhong.TabIndex = 25;
@@ -97,7 +97,7 @@ namespace QLSV
             // 
             this.cbMaToa.FormattingEnabled = true;
             this.cbMaToa.Location = new System.Drawing.Point(539, 124);
-            this.cbMaToa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaToa.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaToa.Name = "cbMaToa";
             this.cbMaToa.Size = new System.Drawing.Size(182, 21);
             this.cbMaToa.TabIndex = 24;
@@ -107,15 +107,16 @@ namespace QLSV
             // 
             this.cbGioiTinh.FormattingEnabled = true;
             this.cbGioiTinh.Location = new System.Drawing.Point(151, 167);
-            this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(2);
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(182, 21);
             this.cbGioiTinh.TabIndex = 23;
+            this.cbGioiTinh.SelectedIndexChanged += new System.EventHandler(this.cbGioiTinh_SelectedIndexChanged);
             // 
             // dtpkNgaySinh
             // 
             this.dtpkNgaySinh.Location = new System.Drawing.Point(151, 125);
-            this.dtpkNgaySinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpkNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.dtpkNgaySinh.Name = "dtpkNgaySinh";
             this.dtpkNgaySinh.Size = new System.Drawing.Size(182, 20);
             this.dtpkNgaySinh.TabIndex = 22;
@@ -123,7 +124,7 @@ namespace QLSV
             // txtDiaChi
             // 
             this.txtDiaChi.Location = new System.Drawing.Point(151, 213);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(182, 20);
             this.txtDiaChi.TabIndex = 21;
@@ -132,7 +133,7 @@ namespace QLSV
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(539, 37);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(182, 20);
             this.txtSDT.TabIndex = 20;
@@ -142,7 +143,7 @@ namespace QLSV
             // txtCCCD
             // 
             this.txtCCCD.Location = new System.Drawing.Point(539, 84);
-            this.txtCCCD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCCCD.Margin = new System.Windows.Forms.Padding(2);
             this.txtCCCD.Name = "txtCCCD";
             this.txtCCCD.Size = new System.Drawing.Size(182, 20);
             this.txtCCCD.TabIndex = 19;
@@ -151,7 +152,7 @@ namespace QLSV
             // txtHoTen
             // 
             this.txtHoTen.Location = new System.Drawing.Point(151, 81);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(182, 20);
             this.txtHoTen.TabIndex = 18;
@@ -161,7 +162,7 @@ namespace QLSV
             // 
             this.txtMaSv.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtMaSv.Location = new System.Drawing.Point(151, 37);
-            this.txtMaSv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaSv.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaSv.Name = "txtMaSv";
             this.txtMaSv.Size = new System.Drawing.Size(182, 20);
             this.txtMaSv.TabIndex = 17;
@@ -299,7 +300,7 @@ namespace QLSV
             // btnAnh
             // 
             this.btnAnh.Location = new System.Drawing.Point(275, 256);
-            this.btnAnh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAnh.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnh.Name = "btnAnh";
             this.btnAnh.Size = new System.Drawing.Size(56, 19);
             this.btnAnh.TabIndex = 40;
@@ -310,7 +311,7 @@ namespace QLSV
             // txtAnh
             // 
             this.txtAnh.Location = new System.Drawing.Point(151, 256);
-            this.txtAnh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAnh.Margin = new System.Windows.Forms.Padding(2);
             this.txtAnh.Name = "txtAnh";
             this.txtAnh.Size = new System.Drawing.Size(121, 20);
             this.txtAnh.TabIndex = 39;
