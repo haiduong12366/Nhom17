@@ -145,11 +145,7 @@ namespace QLSV
             }
         }
 
-
-        public void updatestring(string user,string pass)
-        {
-            connectionSTR = "Data Source=localhost;Initial Catalog=QLSV;User ID="+ user+";Password=" + pass;
-        }
+       
 
 
 

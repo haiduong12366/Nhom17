@@ -1,4 +1,5 @@
-﻿using QLSV.DAO;
+﻿using Microsoft.Data.SqlClient;
+using QLSV.DAO;
 using QLSV.DTO;
 using System;
 using System.Collections.Generic;
@@ -74,11 +75,15 @@ namespace QLSV.Views
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            DBConnection.DangNhap("sa", "haiduong");
-            fDangKy f = new fDangKy();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
+            try
+            {
+                DBConnection.DangNhap("sa", "123456");
+                fDangKy f = new fDangKy();
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

@@ -37,7 +37,7 @@ namespace QLSV.Views
 
         string currAcc = null;
         QuanLy ql ;
-
+        static int dem = 0;
         public static string masv = null ;
         public fQuanLy()
         {
@@ -86,6 +86,7 @@ namespace QLSV.Views
 
             try
             {
+                DBConnection.DangNhap("sa", "haiduong");
                 ns = new SinhVien(txtMSV.Text, txtTen.Text, dtpNgaySinh.Value.Date, txtGT.Text, txtCCCD.Text, txtDiaChi.Text, txtSdt.Text, txtMaPhong.Text, txtMaToa.Text);
                 svDao.Xoa(ns);
                 dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
@@ -94,7 +95,7 @@ namespace QLSV.Views
             {
                 MessageBox.Show(ex.Message);
             }
-
+            DBConnection.DangNhap(ql.Maql, ql.Maql);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -170,7 +171,7 @@ namespace QLSV.Views
                 txtMaPhong.Text = r.Cells[7].Value.ToString();
                 txtMaToa.Text = r.Cells[8].Value.ToString();
             }
-            catch { }
+            catch(Exception ex) { }
         }
 
         private void cboLoaiTimKiem_SelectedIndexChanged(object sender, EventArgs e)
@@ -587,6 +588,30 @@ namespace QLSV.Views
         private void cboLoaiTKHD_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDSduyet_Click(object sender, EventArgs e)
+        {
+            if (dem == 0)
+            {
+                dgvSinhVien.DataSource = svDao.DanhSachDuyet(ql.MaToa);
+                dem = 1;
+            }
+            else
+            {
+                dgvSinhVien.DataSource = svDao.DanhSach(ql.MaToa);
+                dem = 0;
+            }
+        }
+
+        private void btnDuyet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                svDao.Duyet(txtMSV.Text);
+                dgvSinhVien.DataSource = svDao.DanhSachDuyet(ql.MaToa);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }   
 }
