@@ -27,13 +27,24 @@ namespace QLSV.DAO
             string lenh = string.Format("select * from XemBangSinhVien('{0}')", Toa);
             return dbConnec.FormLoad(lenh);
         }
+        public DataTable DanhSachDuyet(string Toa)
+        {
+            string lenh = string.Format("select * from SinhVien where MaToa = '{0}' and duyet = 0", Toa);
+            return dbConnec.FormLoad(lenh);
+           
+        }
 
+        public void Duyet(string ma)
+        {
+            string lenh = string.Format("update SinhVien set duyet = 1 where MaSV = '{0}'", ma);
+            dbConnec.ThucThi(lenh);
+        }
 
         public List<SinhVien> Search(string TK, string value,string toa)
         {
             List<SinhVien> list = new List<SinhVien>();
 
-            string query = "select * from SinhVien where " + TK + " like N'%" + value + "%'" + "and MaToa = '" + toa +"'";
+            string query = "select * from SinhVien where " + TK + " like N'%" + value + "%'" + "and MaToa = '" + toa +"' and where duyet = 1";
 
             DataTable data = DBConnection.Instance.ExecuteQuery(query);
 
@@ -89,6 +100,16 @@ namespace QLSV.DAO
             dbConnec.Use_PROC(sqlStr, new object[] { ns.Mssv, ns.Ten, ns.ngaySinh, ns.Gioitinh, ns.Cccd, ns.Diachi, ns.Sdt, ns.Maphong, ns.Matoa });
 
         }
+        public DataTable DanhSach()
+        {
+            string lenh = string.Format("select * from SinhVien where duyet = 1");
+            return dbConnec.FormLoad(lenh);
+        }
+        public DataTable DanhSachDuyet()
+        {
+            string lenh = string.Format("select * from SinhVien where duyet = 0");
+            return dbConnec.FormLoad(lenh);
 
+        }
     }
 }

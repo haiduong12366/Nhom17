@@ -62,5 +62,10 @@ namespace QLSV.DAO
 
             
         }
+        public DataTable DanhSach()
+        {
+            string lenh = string.Format("select * from KyLuat ");
+            return dbConnec.FormLoad(lenh);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using QLSV.DAO;
+﻿using Microsoft.Data.SqlClient;
+using QLSV.DAO;
 using QLSV.DTO;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace QLSV.Views
                     if (tk.CapBac == 0)
                     {
                         string acc = "SV" + tk.Taikhoan;
-                        DBConnection.DangNhap(acc, tk.Taikhoan);
+                        DBConnection.Instance.DangNhap(acc, tk.Taikhoan);
                         string sv = SinhVienDAO.Instance.Loc(txt).Mssv;
                         UserSession.LoginUser(SinhVienDAO.Instance.Loc(sv));
                         fSinhVien f = new fSinhVien();
@@ -52,7 +53,8 @@ namespace QLSV.Views
                     }
                     else if (tk.CapBac == 1)
                     {
-                        DBConnection.DangNhap(tk.Taikhoan, tk.Taikhoan);
+                        MessageBox.Show(tk.Taikhoan);
+                        DBConnection.Instance.DangNhap(tk.Taikhoan, tk.Taikhoan);
                         fQuanLy f = new fQuanLy();
                         this.Hide();
                         f.ShowDialog();
@@ -60,11 +62,17 @@ namespace QLSV.Views
                     }
                     else
                     {
-                        DBConnection.DangNhap("sa", "haiduong");
-                        fAdmin f = new fAdmin();
+                        DBConnection.Instance.DangNhap("sa", "haiduong");
+                         fAdmin f = new fAdmin();
+                          this.Hide();
+                          f.ShowDialog();
+                          this.Show();
+                        
+                      /*  fQuanLy f = new fQuanLy();
                         this.Hide();
                         f.ShowDialog();
                         this.Show();
+                      */
                     }
 
                 }
@@ -74,11 +82,15 @@ namespace QLSV.Views
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            DBConnection.DangNhap("sa", "haiduong");
-            fDangKy f = new fDangKy();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
+            try
+            {
+                DBConnection.Instance.DangNhap("sa", "haiduong");
+                fDangKy f = new fDangKy();
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
