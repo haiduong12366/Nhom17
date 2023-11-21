@@ -177,7 +177,8 @@
             this.Controls.Add(this.panel3);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fDoiMatKhau";
-            this.Text = "fDoiMatKhau";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form Đổi Mật Khẩu";
             this.Load += new System.EventHandler(this.fDoiMatKhau_Load);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();

@@ -53,7 +53,6 @@ namespace QLSV.Views
                     }
                     else if (tk.CapBac == 1)
                     {
-                        MessageBox.Show(tk.Taikhoan);
                         DBConnection.Instance.DangNhap(tk.Taikhoan, tk.Taikhoan);
                         fQuanLy f = new fQuanLy();
                         this.Hide();
@@ -62,7 +61,7 @@ namespace QLSV.Views
                     }
                     else
                     {
-                        DBConnection.Instance.DangNhap("sa", "haiduong");
+                        DBConnection.Instance.DangNhap(tk.Taikhoan, tk.Taikhoan);
                          fAdmin f = new fAdmin();
                           this.Hide();
                           f.ShowDialog();
@@ -93,9 +92,5 @@ namespace QLSV.Views
             catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

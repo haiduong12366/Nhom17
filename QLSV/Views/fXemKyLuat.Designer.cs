@@ -64,7 +64,8 @@
             this.Controls.Add(this.dtgvKyLuat);
             this.Controls.Add(this.label20);
             this.Name = "fXemKyLuat";
-            this.Text = "fXemKyLuat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Form Xem Kỷ Luật";
             ((System.ComponentModel.ISupportInitialize)(this.dtgvKyLuat)).EndInit();
             this.ResumeLayout(false);
 

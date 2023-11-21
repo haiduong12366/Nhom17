@@ -92,6 +92,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label11);
             this.Name = "fTaiKhoan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tài Khoản";
             this.Load += new System.EventHandler(this.fTaiKhoan_Load);
             this.ResumeLayout(false);
